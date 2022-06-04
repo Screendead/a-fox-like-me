@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.foximities {
+  font-family: monospace;
+  list-style: none;
+  text-align: start;
+}
