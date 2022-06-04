@@ -1,0 +1,46 @@
+import { Collection } from "./Collection";
+import { FromAccountOrToAccountOrOwnerOrCreator } from "./FromAccountOrToAccountOrOwnerOrCreator";
+import { LastSale } from "./LastSale";
+import { PrimaryAssetContractsEntityOrAssetContract } from "./PrimaryAssetContractsEntityOrAssetContract";
+import { TopOwnershipsEntity } from "./TopOwnershipsEntity";
+import { TraitsEntity } from "./TraitsEntity";
+
+export interface Fox {
+  id: number;
+  num_sales: number;
+  background_color?: null;
+  image_url: string;
+  image_preview_url: string;
+  image_thumbnail_url: string;
+  image_original_url: string;
+  animation_url?: null;
+  animation_original_url?: null;
+  name: string;
+  description: string;
+  external_link?: null;
+  asset_contract: PrimaryAssetContractsEntityOrAssetContract;
+  permalink: string;
+  collection: Collection;
+  decimals: number;
+  token_metadata: string;
+  is_nsfw: boolean;
+  owner: FromAccountOrToAccountOrOwnerOrCreator;
+  sell_orders?: null;
+  seaport_sell_orders?: null;
+  creator: FromAccountOrToAccountOrOwnerOrCreator;
+  traits?: (TraitsEntity)[] | null;
+  last_sale: LastSale;
+  top_bid?: null;
+  listing_date?: null;
+  is_presale: boolean;
+  transfer_fee_payment_token?: null;
+  transfer_fee?: null;
+  related_assets?: (null)[] | null;
+  orders?: null;
+  auctions?: (null)[] | null;
+  supports_wyvern: boolean;
+  top_ownerships?: (TopOwnershipsEntity)[] | null;
+  ownership?: null;
+  highest_buyer_commitment?: null;
+  token_id: string;
+}
