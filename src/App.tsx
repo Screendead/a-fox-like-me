@@ -3,11 +3,15 @@ import { foximity } from './models/foximity';
 import { Fox } from './models/fox/Fox';
 import { useEffect, useState } from 'react';
 import { Foximity } from './models/fox/Foximity';
+import { search } from './models/search';
 
 function App() {
   const [tokenID, setTokenID] = useState('');
   const [fox, setFox] = useState<Fox | undefined>();
   const [foximities, setFoximities] = useState<Foximity[]>([]);
+
+  const [searchTerm, setSearchTerm] = useState<string | undefined>();
+  const [searchResults, setSearchResults] = useState<Fox[]>([]);
 
   useEffect(() => {
     if (tokenID) {
@@ -25,6 +29,14 @@ function App() {
     }
   }, [tokenID]);
 
+  useEffect(() => {
+    if (searchTerm) {
+      setSearchResults(search(searchTerm));
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchTerm]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -38,9 +50,26 @@ function App() {
           Enter your Fox's token ID and click the button to see how close your
           Fox is to other Foxes.
         </p>
-        <input type="number" value={tokenID} onChange={(e) => {
+        <input type="number" value={tokenID} placeholder="Token ID (e.g. 123)" onChange={(e) => {
           setTokenID(e.target.value);
         }} />
+        <span>--- or ---</span>
+        <div>
+          <div>
+            <span>Search: </span>
+            <input type="text" value={searchTerm} placeholder="Search" onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }} />
+          </div>
+          {searchTerm && <div>
+            {searchResults.map(f => <button key={f.tokenId} onClick={() => {
+              setTokenID(f.tokenId.toString());
+              setSearchTerm('');
+            }}>
+              {f.name}
+            </button>)}
+          </div>}
+        </div>
         {fox && <>
           <p>
             Viewing {} Foxes similar to {fox?.tokenId ?? 'unknown'}: "{fox?.name ?? 'unknown'}"
