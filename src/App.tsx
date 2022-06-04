@@ -41,6 +41,9 @@ function App() {
               {result.fox.token_id}. {result.fox.name} ({result.proximityPercentage}%)
             </li>)}
           </ol>
+          <button onClick={() => {
+            setFox(null);
+          }}>Reset</button>
         </>}
       </header>
     </div>
