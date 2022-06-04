@@ -1,14 +1,29 @@
 import './App.css';
 import { foximity } from './models/foximity';
-import foxesImport from './models/foxes.json';
 import { Fox } from './models/fox/Fox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Foximity } from './models/fox/Foximity';
 
 function App() {
   const [tokenID, setTokenID] = useState('');
-  const [fox, setFox] = useState<Fox | null>(null);
+  const [fox, setFox] = useState<Fox | undefined>();
+  const [foximities, setFoximities] = useState<Foximity[]>([]);
 
-  const foxes = foxesImport.foxes.map(fox => fox as Fox);
+  useEffect(() => {
+    if (tokenID) {
+      try {
+        let _f = foximity(parseInt(tokenID))
+          .splice(0, 25);
+        setFox(_f.find(f => f.fox.tokenId === parseInt(tokenID))?.fox);
+        setFoximities(_f);
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      setFox(undefined);
+      setFoximities([]);
+    }
+  }, [tokenID]);
 
   return (
     <div className="App">
@@ -19,31 +34,22 @@ function App() {
           <Box position={[-1.2, 0, 0]} />
           <Box position={[1.2, 0, 0]} />
         </Canvas> */}
-        {!fox && <>
-          <p>
-            Enter your Fox's token ID and click the button to see how close your
-            Fox is to other Foxes.
-          </p>
-          <input type="number" value={tokenID} onChange={(e) => setTokenID(e.target.value)} />
-          <button onClick={() => {
-            setFox(foxes.find(fox => fox.token_id === tokenID) || null);
-          }}>Submit</button>
-        </>}
+        <p>
+          Enter your Fox's token ID and click the button to see how close your
+          Fox is to other Foxes.
+        </p>
+        <input type="number" value={tokenID} onChange={(e) => {
+          setTokenID(e.target.value);
+        }} />
         {fox && <>
           <p>
-            Your Fox is "{foxes.find(fox => fox.token_id === tokenID)?.name ?? 'unknown'}"
-          </p>
-          <p>
-            Similar foxes:
+            Viewing {} Foxes similar to {fox?.tokenId ?? 'unknown'}: "{fox?.name ?? 'unknown'}"
           </p>
           <ol className='foximities'>
-            {foximity(fox).map(result => <li key={result.fox.token_id}>
-              {result.fox.token_id}. {result.fox.name} ({result.proximityPercentage}%)
+            {foximities.map(result => <li key={result.fox.tokenId}>
+              {result.fox.tokenId}. {result.fox.name} ({result.proximityPercentage}%)
             </li>)}
           </ol>
-          <button onClick={() => {
-            setFox(null);
-          }}>Reset</button>
         </>}
       </header>
     </div>

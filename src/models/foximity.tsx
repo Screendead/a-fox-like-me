@@ -1,34 +1,36 @@
 import { Fox } from './fox/Fox';
-import foxesImport from './foxes.json';
-const foxes = foxesImport.foxes.map(fox => fox as Fox);
+import { Foximity } from './fox/Foximity';
+import foxesJSON from './foxes.json';
 
-export function foximity(fox: Fox): {
-  fox: Fox,
-  proximity: number,
-  proximityPercentage: number,
-}[] {
+const foxes = foxesJSON.map(fox => fox as Fox);
+
+export function foximity(tokenID: number): Foximity[] {
   let seen: {[key: string]: boolean} = {};
 
-  const myFox = fox;
+  const myFox = foxes.find(fox => fox.tokenId === tokenID);
 
-  let myPhilosophy = myFox.traits?.find(trait => trait.trait_type === 'Philosophy');
-  let mySpecies = myFox.traits?.find(trait => trait.trait_type === 'Species');
-  let myVirtues = myFox.traits?.filter(trait => trait.trait_type === 'Virtues') ?? [];
-  let myBaggage = myFox.traits?.filter(trait => trait.trait_type === 'Baggage') ?? [];
+  if (!myFox) {
+    return [];
+  }
+
+  let myPhilosophy = myFox.attributes?.find(trait => trait.trait_type === 'Philosophy');
+  let mySpecies = myFox.attributes?.find(trait => trait.trait_type === 'Species');
+  let myVirtues = myFox.attributes?.filter(trait => trait.trait_type === 'Virtues') ?? [];
+  let myBaggage = myFox.attributes?.filter(trait => trait.trait_type === 'Baggage') ?? [];
 
   let maxProximity = 5 + 3 + myVirtues.length * 1 + myBaggage.length * 1;
 
   return foxes
     .filter(function(item) {
-      return seen.hasOwnProperty(item.token_id) ? false : (seen[item.token_id] = true);
+      return seen.hasOwnProperty(item.tokenId) ? false : (seen[item.tokenId] = true);
     })
     .map(fox => {
       let proximity = 0;
 
-      let theirPhilosophy = fox.traits?.find(trait => trait.trait_type === 'Philosophy');
-      let theirSpecies = fox.traits?.find(trait => trait.trait_type === 'Species');
-      let theirVirtues = fox.traits?.filter(trait => trait.trait_type === 'Virtues') ?? [];
-      let theirBaggage = fox.traits?.filter(trait => trait.trait_type === 'Baggage') ?? [];
+      let theirPhilosophy = fox.attributes?.find(trait => trait.trait_type === 'Philosophy');
+      let theirSpecies = fox.attributes?.find(trait => trait.trait_type === 'Species');
+      let theirVirtues = fox.attributes?.filter(trait => trait.trait_type === 'Virtues') ?? [];
+      let theirBaggage = fox.attributes?.filter(trait => trait.trait_type === 'Baggage') ?? [];
 
       if (myPhilosophy?.value === theirPhilosophy?.value) {
         proximity += 5;
@@ -56,5 +58,7 @@ export function foximity(fox: Fox): {
         proximityPercentage: Math.round(proximity / maxProximity * 10000) / 100,
       };
     })
+    .filter(result => result.proximityPercentage > 0)
+    // .filter(f => f.fox.tokenId !== myFox.tokenId)
     .sort((a, b) => b.proximityPercentage - a.proximityPercentage);
 }
