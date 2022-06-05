@@ -7,6 +7,8 @@
   left: 0;
   right: 0;
   bottom: 0;
+
+  z-index: -1;
 }
 
 .experience-title, .experience-fox-name {
@@ -25,6 +27,20 @@
 
 .internalDisplay {
   padding: 20px;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding-top: 10px;
+
+      .trait-name {
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 .heading {

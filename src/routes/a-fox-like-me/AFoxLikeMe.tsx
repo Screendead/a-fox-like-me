@@ -43,25 +43,24 @@ export function AFoxLikeMe() {
           {fox && <FoxPlanet position={[0, 0, 0]} fox={fox} />}
         </Canvas>
       </div>
-      <div className="display">
+      {fox && <div className="display">
         <div className="internalDisplay">
           <div className="heading">
-            <img className="pfp" src="https://lh3.googleusercontent.com/64GLMX85SvN6lehNLg45wePcrBweBlgaRHe-LQh4XXcvdiy8bIGPfiSBw6ZBAbQpuN51ejH0-S2JMvDa9Ht-NFkHdmWvNiY-oAUx=w600" alt="pfp" />
+            <img className="pfp" src={fox.image.replace('ipfs://', 'https://ipfs.io/ipfs/')} alt="pfp" />
             <span>
-              <h2 className="component-title">LAGUNA LACUNA</h2>
-              <h3 className="component-subtitle">#417</h3>
+              <h2 className="component-title">{fox.name.toUpperCase()}</h2>
+              <h3 className="component-subtitle">#{fox.tokenId}</h3>
             </span>
           </div>
-          <p>Philosophy: Stoic</p>
-          <p>Speicies: Jester</p>
-          <p>Virtue: Knack for accents</p>
-          <p>Virtue: Good at swearing</p>
-          <p>Virtue: Makes an increadible curry</p>
-          <p>Baggage: Sanctimonious</p>
-          <p>Baggage: Bad Speller</p>
-          <p>Baggage: Always Late</p>
+          <ul>
+            {fox.attributes.map(a => {
+              return (<li key={a.trait_type}>
+                <span className="trait-name">{a.trait_type}</span>: {a.value}
+              </li>);
+            })}
+          </ul>
         </div>
-      </div>
+      </div>}
     </>
   );
 }
