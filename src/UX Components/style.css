@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200&display=swap');
+@import url('https://db.onlinewebfonts.com/c/51c640524453c80e4ec2b79f620dae59?family=Code+7x5');
+
+body {
+    color: aliceblue;
+    background-color: black;
+    font-family: 'IBM Plex Mono',sans-serif;
+}
+
+.display {
+    border: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: aliceblue
+}
+
+.internalDisplay {
+    padding: 20px;
+}
+
+.heading {
+    display: flex;
+}
+
+.component-title {
+    font-family: 'Code 7x5',sans-serif;
+    margin-top: 0px;
+    margin-bottom: 6px;
+    display:block;
+}
+
+.component-subtitle {
+    display:block;
+    margin-top: 6px;
+}
+
+#pfp {
+    border-radius: 5px;
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+    display:flex;
+    align-items:center;
+}
