@@ -1,10 +1,23 @@
 import inputArray from "./V1FoxesOSData.json"
+// import fs from 'node:fs/promises'
 
 export async function runMe() {
   console.log('Handling V1 Foxes...');
 
-  async function getItem(tokenNum: any) {
-
+  function constructItem(i: any) {
+    let url = inputArray[i].image_preview_url
+    let newUrl = url.replace(/w=s\d+/, 'w=s256');
+    // console.log(newUrl);
+    let traits = inputArray[i].traits
+    // console.log(traits);
+    let FoxJson = {
+      "image": newUrl,
+      "tokenId": "G"+ inputArray[i].token_id.substring(0, 5),
+      "description": inputArray[i].description,
+      "name": inputArray[i].name,
+      "attributes": traits
+  }
+  return FoxJson
   }
 
   async function loopFoxes(loopTimes: any) {
@@ -12,11 +25,13 @@ export async function runMe() {
     console.log(inputArray);
 
     for (let i = 1; i < loopTimes; i++) { // 1300 Tokens
-      // foxArray.push(await getItem (i))
+      foxArray.push(await constructItem(i))
 
       console.log(i);
       if (foxArray.length === loopTimes - 1) {
-        // fs.writeFile("./parsedV1data.json",JSON.stringify(foxArray))
+      // fs.writeFile("./parsedV1data.json",JSON.stringify(foxArray))
+      console.log(foxArray);
+      
         // return foxArray
       }
 
@@ -29,9 +44,7 @@ export async function runMe() {
   // console.log(foxArray);
   // fs.writeFile("./data.json",JSON.stringify(foxArray))
 
-  // url = inputArray[i].image_preview_url
-  // let newUrl = url.replace(/w=s\d+/, 'w=s256');
-  // inputArray[i].
+
 
   // ...
 }
