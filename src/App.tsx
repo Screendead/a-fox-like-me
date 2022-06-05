@@ -1,6 +1,7 @@
 import './App.css';
 import { Canvas } from '@react-three/fiber';
 import { Box } from './models/box';
+import { runMe } from './models/gettingData/parseV1';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={runMe}>Click Me!</button>
       </header>
     </div>
   );
