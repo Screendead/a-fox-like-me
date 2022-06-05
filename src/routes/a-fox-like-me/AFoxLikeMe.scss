@@ -66,4 +66,25 @@
   margin-right: 10px;
   display:flex;
   align-items:center;
+  color: #fff;
+}
+
+.component-title {
+  margin: auto;
+  display:grid;
+}
+
+.heading {
+  padding-left: 8px;
+}
+
+.dFoxes {
+  max-width: 250px;
+  width: 90%;
+  margin: auto;
+  font-size: x-small;
+}
+
+.dFoxes td:nth-child(2) {
+  text-align: end;
 }

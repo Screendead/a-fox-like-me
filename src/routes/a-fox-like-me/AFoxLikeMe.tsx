@@ -5,25 +5,26 @@ import { Fox } from "../../models/fox/Fox";
 import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
 import { FoxPlanet } from "../../models/fox-planet/FoxPlanet";
+import { Foximity } from "../../models/fox/Foximity";
 
 export function AFoxLikeMe() {
   let { id } = useParams();
 
   const [fox, setFox] = useState<Fox | undefined>();
-  // const [foximities, setFoximities] = useState<Foximity[]>([]);
+  const [foximities, setFoximities] = useState<Foximity[]>([]);
 
   useEffect(() => {
     if (id) {
       try {
         let _f = foximity(parseInt(id));
         setFox(_f.find(f => f.fox.tokenId === parseInt(id!))?.fox);
-        // setFoximities(_f);
+        setFoximities(_f);
       } catch (e) {
         console.log(e);
       }
     } else {
       setFox(undefined);
-      // setFoximities([]);
+      setFoximities([]);
     }
   }, [id]);
 
@@ -61,6 +62,33 @@ export function AFoxLikeMe() {
           </ul>
         </div>
       </div>}
+      <div className="experience-container">
+        <div className="display">
+          <div className="internalDisplay">
+            <div className="heading">
+              <h2 className="component-title">DISTANT FOXES</h2>
+            </div>
+            <table id="dFoxes">
+              <thead>
+                <tr>
+                  <th>Token ID</th>
+                  <th>Name</th>
+                  <th>Distance</th>
+                </tr>
+              </thead>
+              <tbody>
+                {foximities.map(f => (
+                  <tr key={f.fox.tokenId}>
+                    <td>{f.fox.tokenId}</td>
+                    <td>{f.fox.name}</td>
+                    <td>{f.proximityPercentage}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
