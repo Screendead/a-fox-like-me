@@ -24,11 +24,14 @@ body {
 
 .component-title {
     font-family: 'Code 7x5',sans-serif;
-    display:contents;
+    margin-top: 0px;
+    margin-bottom: 6px;
+    display:block;
 }
 
 .component-subtitle {
-    display:contents;
+    display:block;
+    margin-top: 6px;
 }
 
 #pfp {
