@@ -43,8 +43,24 @@ export function AFoxLikeMe() {
           {fox && <FoxPlanet position={[0, 0, 0]} fox={fox} />}
         </Canvas>
       </div>
-      <div className="experience-title">A Fox Like Me</div>
-      <div className="experience-fox-name">{fox?.name}</div>
+      {fox && <div className="display">
+        <div className="internalDisplay">
+          <div className="heading">
+            <img className="pfp" src={fox.image.replace('ipfs://', 'https://ipfs.io/ipfs/')} alt="pfp" />
+            <span>
+              <h2 className="component-title">{fox.name.toUpperCase()}</h2>
+              <h3 className="component-subtitle">#{fox.tokenId}</h3>
+            </span>
+          </div>
+          <ul>
+            {fox.attributes.map(a => {
+              return (<li key={a.trait_type}>
+                <span className="trait-name">{a.trait_type}</span>: {a.value}
+              </li>);
+            })}
+          </ul>
+        </div>
+      </div>}
     </>
   );
 }

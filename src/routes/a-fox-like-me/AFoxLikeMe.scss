@@ -1,11 +1,69 @@
+
+@import url('https://db.onlinewebfonts.com/c/51c640524453c80e4ec2b79f620dae59?family=Code+7x5');
+
 .experience-container {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+
+  z-index: -1;
 }
 
 .experience-title, .experience-fox-name {
   color: #fff;
+}
+
+.display {
+  display: inline-block;
+
+  border: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: aliceblue;
+  color: #fff;
+}
+
+.internalDisplay {
+  padding: 20px;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding-top: 10px;
+
+      .trait-name {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.heading {
+  display: flex;
+}
+
+.component-title {
+  font-family: 'Code 7x5',sans-serif;
+  margin-top: 0px;
+  margin-bottom: 6px;
+  display:block;
+}
+
+.component-subtitle {
+  display:block;
+  margin-top: 6px;
+}
+
+.pfp {
+  border-radius: 5px;
+  height: 60px;
+  width: 60px;
+  margin-right: 10px;
+  display:flex;
+  align-items:center;
 }
