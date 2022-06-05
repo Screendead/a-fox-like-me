@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Fox MetaData</title>
+</head>
+<style>
+    .component-title {
+        margin: auto;
+        display:grid;
+    }
+
+    .heading {
+        padding-left: 8px;
+    }
+
+    #dFoxes {
+        max-width: 250px;
+        width: 90%;
+        margin: auto;
+        font-size: x-small;
+    }
+
+    #dFoxes td:nth-child(2) {
+        text-align: end;
+    }
+</style>
+
+<body>
+
+    <div class="display">
+        <div class="internalDisplay">
+            <div class="heading">
+            <h2 class="component-title">DISTANT FOXES</h2>
+        </div>
+            <table id="dFoxes">
+                <!-- <thead>
+      <tr style="font-style: italic;">
+        <th>Fox</th>
+        <th style="text-align: right;">Match</th>
+      </tr>
+    </thead> -->
+                <tbody></tbody>
+            </table>
+
+            
+            <script>
+                window.onload = function () {
+                    var foxData = [{
+                        "name": "Brain in VAT",
+                        "match": "12%"
+                    },
+                    {
+                        "name": "Mempool",
+                        "match": "10%"
+                    },
+                    {
+                        "name": "Romance",
+                        "match": "4%"
+                    }
+                    ];
+
+                    function addDataToTbody(nl, data) { // nl -> NodeList, data -> array with objects
+                        data.forEach((d, i) => {
+                            var tr = nl.insertRow(i);
+                            Object.keys(d).forEach((k, j) => { // Keys from object represent th.innerHTML
+                                var cell = tr.insertCell(j);
+                                cell.innerHTML = d[k]; // Assign object values to cells   
+                            });
+                            nl.appendChild(tr);
+                        })
+                    }
+                    var foxTbody = document.querySelector("#dFoxes tbody");
+
+                    addDataToTbody(foxTbody, foxData);
+                };
+            </script>
+        </div>
+    </div>
+</body>
+</html>
