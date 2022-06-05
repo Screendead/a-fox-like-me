@@ -27,3 +27,9 @@ loopFoxes (10)//112
 // fs.writeFile("./data.json",JSON.stringify(foxArray))
 
 
+
+// url = inputArray[i].image_preview_url
+// let newUrl = url.replace(/w=s\d+/, 'w=s256');
+// inputArray[i].traits
+
+
