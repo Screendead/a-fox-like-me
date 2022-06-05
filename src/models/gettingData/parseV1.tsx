@@ -1,13 +1,14 @@
 import inputArray from "./V1FoxesOSData.json"
 // import fs from 'node:fs/promises'
 
-export async function runMe() {
+export async function runMe(): Promise<string> {
   console.log('Handling V1 Foxes...');
 
   function constructItem(i: any) {
     let url = inputArray[i].image_preview_url
-    let newUrl = url.replace(/w=s\d+/, 'w=s256');
-    // console.log(newUrl);
+    console.log('image_preview_url', url);
+    let newUrl = url.replace(/s\d+$/, 'w=s256');
+    console.log('newUrl', newUrl);
     let traits = inputArray[i].traits
     // console.log(traits);
     let FoxJson = {
@@ -16,8 +17,8 @@ export async function runMe() {
       "description": inputArray[i].description,
       "name": inputArray[i].name,
       "attributes": traits
-  }
-  return FoxJson
+    }
+    return FoxJson
   }
 
   async function loopFoxes(loopTimes: any) {
@@ -31,7 +32,7 @@ export async function runMe() {
       if (foxArray.length === loopTimes - 1) {
       // fs.writeFile("./parsedV1data.json",JSON.stringify(foxArray))
       console.log(foxArray);
-      
+
         // return foxArray
       }
 
@@ -40,11 +41,9 @@ export async function runMe() {
   }
 
 
-  loopFoxes(10) // 112
+  // loopFoxes(10) // 112
   // console.log(foxArray);
   // fs.writeFile("./data.json",JSON.stringify(foxArray))
 
-
-
-  // ...
+  return JSON.stringify([]);
 }
