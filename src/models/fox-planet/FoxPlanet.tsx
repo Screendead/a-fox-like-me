@@ -7,8 +7,6 @@ import { useTexture } from '@react-three/drei';
 
 export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & { fox: Fox }) {
   const ref = useRef<THREE.Mesh>(null!);
-  const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
   const [texture, setTexture] = useState<THREE.Texture>();
 
   let ipfsImage = props.fox.image;
@@ -33,14 +31,8 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & { fox: Fox }) {
   return (
     <mesh
       {...props}
-      ref={ref}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}>
-      <circleGeometry args={[
-        1,
-        8,
-      ]} />
+      ref={ref}>
+      <circleGeometry args={[1, 8]} />
       <meshStandardMaterial map={texture} />
     </mesh>
   );

@@ -1,8 +1,7 @@
 import "./AFoxLikeMe.scss";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Fox } from "../../models/fox/Fox";
-import { Foximity } from "../../models/fox/Foximity";
 import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
 import { FoxPlanet } from "../../models/fox-planet/FoxPlanet";
@@ -11,20 +10,20 @@ export function AFoxLikeMe() {
   let { id } = useParams();
 
   const [fox, setFox] = useState<Fox | undefined>();
-  const [foximities, setFoximities] = useState<Foximity[]>([]);
+  // const [foximities, setFoximities] = useState<Foximity[]>([]);
 
   useEffect(() => {
     if (id) {
       try {
         let _f = foximity(parseInt(id));
         setFox(_f.find(f => f.fox.tokenId === parseInt(id!))?.fox);
-        setFoximities(_f);
+        // setFoximities(_f);
       } catch (e) {
         console.log(e);
       }
     } else {
       setFox(undefined);
-      setFoximities([]);
+      // setFoximities([]);
     }
   }, [id]);
 
@@ -41,9 +40,6 @@ export function AFoxLikeMe() {
           position: [0, 0, 25],
         }}>
           <ambientLight />
-          {/* <directionalLight
-            position={[10, 10, 10]}
-            intensity={0.2} /> */}
           {fox && <FoxPlanet position={[0, 0, 0]} fox={fox} />}
         </Canvas>
       </div>
