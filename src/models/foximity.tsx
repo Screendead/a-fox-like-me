@@ -70,7 +70,5 @@ export function foximity(tokenID: number): Foximity[] {
         proximityPercentage: Math.round(proximity / maxProximity * 10000) / 100,
       };
     })
-    .filter(result => result.proximityPercentage > 0)
-    .sort((a, b) => b.proximityPercentage - a.proximityPercentage)
-    .slice(0, 25);
+    .sort((a, b) => b.proximityPercentage - a.proximityPercentage);
 }

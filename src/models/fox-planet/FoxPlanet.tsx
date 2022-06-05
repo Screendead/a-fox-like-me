@@ -16,7 +16,10 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & { fox: Fox }) {
     tx = tx as THREE.Texture;
     tx.wrapS = tx.wrapT = THREE.RepeatWrapping;
     tx.repeat.set(1, 1);
+    tx.center.set(0.5, 0.5);
 
+    ref.current.rotation.z = 0;
+    tx.rotation = 0;
     setTexture(tx);
   });
 
@@ -24,7 +27,6 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & { fox: Fox }) {
     if (!texture) return;
 
     ref.current.rotation.z += 0.01;
-    texture.center.set(0.5, 0.5);
     texture.rotation -= 0.01;
   });
 
