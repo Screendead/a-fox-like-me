@@ -5,7 +5,7 @@ import { Fox } from "../../models/fox/Fox";
 import { Foximity } from "../../models/fox/Foximity";
 import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
-import { CelestialVulpes } from "../../models/CelestialVulpes";
+import { FoxPlanet } from "../../models/FoxPlanet";
 
 export function AFoxLikeMe() {
   let { id } = useParams();
@@ -29,21 +29,23 @@ export function AFoxLikeMe() {
   }, [id]);
 
   return (
-    <div className="experience-container">
+    <>
+      <div className="experience-container">
+        <Canvas shadows camera={{
+          fov: 30,
+          near: 0.1,
+          far: 1000,
+          position: [0, 0, 25],
+        }}>
+          <directionalLight
+            castShadow
+            position={[10, 10, 10]}
+            intensity={1} />
+          {fox && <FoxPlanet position={[0, 0, 0]} fox={fox} />}
+        </Canvas>
+      </div>
       <div className="experience-title">A Fox Like Me</div>
       <div className="experience-fox-name">{fox?.name}</div>
-      <Canvas shadows camera={{
-        fov: 30,
-        near: 0.1,
-        far: 1000,
-        position: [0, 0, 25],
-      }}>
-        <directionalLight
-          castShadow
-          position={[10, 10, 10]}
-          intensity={1} />
-        <CelestialVulpes foxes={foximities} />
-      </Canvas>
-    </div>
+    </>
   );
 }

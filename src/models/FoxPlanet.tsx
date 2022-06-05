@@ -1,26 +1,35 @@
 import * as THREE from 'three';
 import { useRef, useState } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { Fox } from './fox/Fox';
+import { useTexture } from '@react-three/drei';
 
-export function FoxPlanet(props: JSX.IntrinsicElements['mesh']) {
+export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & { fox: Fox }) {
   const ref = useRef<THREE.Mesh>(null!);
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
+
+  let ipfsImage = props.fox.image;
+  let httpsImage = ipfsImage.replace('ipfs://', 'https://ipfs.io/ipfs/');
+
+  const texture = useTexture(httpsImage);
+
+  useFrame(() => {
+    // ref.current.rotation.z += 0.01;
+  });
 
   return (
     <mesh castShadow receiveShadow
       {...props}
       ref={ref}
-      scale={clicked ? 1 : 1.5}
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
-      <sphereGeometry args={[
-        0.5,
-        32,
-        32,
+      <circleGeometry args={[
+        1,
+        8,
       ]} />
-      {/* <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} /> */}
-      <meshToonMaterial color={hovered ? 'hotpink' : 'orange'} />
+      <meshBasicMaterial attach="material" map={texture} />
     </mesh>
   );
 }
