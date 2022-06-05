@@ -1,5 +1,4 @@
-import * as THREE from 'three';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Foximity } from './fox/Foximity';
 import { FoxPlanet } from './FoxPlanet';

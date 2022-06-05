@@ -5,7 +5,6 @@ import { Fox } from "../../models/fox/Fox";
 import { Foximity } from "../../models/fox/Foximity";
 import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
-import { Box } from "../../models/box";
 import { CelestialVulpes } from "../../models/CelestialVulpes";
 
 export function AFoxLikeMe() {
@@ -13,8 +12,6 @@ export function AFoxLikeMe() {
 
   const [fox, setFox] = useState<Fox | undefined>();
   const [foximities, setFoximities] = useState<Foximity[]>([]);
-
-  const [celestialVulpes, setCelestialVulpes] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     if (id) {
@@ -33,6 +30,8 @@ export function AFoxLikeMe() {
 
   return (
     <div className="experience-container">
+      <div className="experience-title">A Fox Like Me</div>
+      <div className="experience-fox-name">{fox?.name}</div>
       <Canvas shadows camera={{
         fov: 30,
         near: 0.1,
