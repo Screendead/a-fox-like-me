@@ -15,14 +15,48 @@
   color: #fff;
 }
 
+.top {
+  &-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.bottom {
+  &-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
 .display {
   display: inline-block;
 
+  background-color: black;
   border: 2px;
   border-style: solid;
   border-radius: 10px;
   border-color: aliceblue;
   color: #fff;
+
+  margin: 10px;
+  min-width: 250px;
+  width: 30%;
+  max-width: 500px;
 }
 
 .internalDisplay {
@@ -49,9 +83,9 @@
 
 .component-title {
   font-family: 'Code 7x5',sans-serif;
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 6px;
-  display:block;
+  display: block;
 }
 
 .component-subtitle {
@@ -64,27 +98,41 @@
   height: 60px;
   width: 60px;
   margin-right: 10px;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   color: #fff;
 }
 
 .component-title {
   margin: auto;
-  display:grid;
+  display: grid;
 }
 
 .heading {
   padding-left: 8px;
+  margin-bottom: 10px;
 }
 
-.dFoxes {
-  max-width: 250px;
-  width: 90%;
+table {
   margin: auto;
-  font-size: x-small;
+  border-collapse: separate;
+  border-spacing: 5px 2px;
+
+  th {
+    text-align: left;
+    font-weight: bold;
+  }
+
+  td {
+    text-align: left;
+  }
 }
 
-.dFoxes td:nth-child(2) {
-  text-align: end;
+.fox-sublink {
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
