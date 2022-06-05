@@ -1,11 +1,11 @@
 import "./AFoxLikeMe.scss";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Fox } from "../../models/fox/Fox";
 import { Foximity } from "../../models/fox/Foximity";
 import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
-import { FoxPlanet } from "../../models/FoxPlanet";
+import { FoxPlanet } from "../../models/fox-planet/FoxPlanet";
 
 export function AFoxLikeMe() {
   let { id } = useParams();
@@ -31,16 +31,19 @@ export function AFoxLikeMe() {
   return (
     <>
       <div className="experience-container">
-        <Canvas shadows camera={{
+        <Canvas
+          linear
+          flat
+          camera={{
           fov: 30,
           near: 0.1,
           far: 1000,
           position: [0, 0, 25],
         }}>
-          <directionalLight
-            castShadow
+          <ambientLight />
+          {/* <directionalLight
             position={[10, 10, 10]}
-            intensity={1} />
+            intensity={0.2} /> */}
           {fox && <FoxPlanet position={[0, 0, 0]} fox={fox} />}
         </Canvas>
       </div>
