@@ -10,6 +10,8 @@ export async function runMe(): Promise<string> {
     let newUrl = url.replace(/s\d+$/, 'w=s256');
     console.log('newUrl', newUrl);
     let traits = inputArray[i].traits
+// delete thisTrait.order;
+// delete thisTrait.order;
     // console.log(traits);
     let FoxJson = {
       "image": newUrl,
