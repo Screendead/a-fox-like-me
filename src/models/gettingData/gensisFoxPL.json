@@ -1,0 +1,304 @@
+{
+    "id": 72680097,
+    "num_sales": 1,
+    "background_color": null,
+    "image_url": "https://lh3.googleusercontent.com/MiwPzIrPk3e2i1vBsJiCgWMG9h8FJerrKGAoKtlIn34wJLwUyLe9ZH7m8chH7O3Kp3kg4ZbrbxqD2I95_Dl1iUGHTmh-6psIdiFXWA",
+    "image_preview_url": "https://lh3.googleusercontent.com/MiwPzIrPk3e2i1vBsJiCgWMG9h8FJerrKGAoKtlIn34wJLwUyLe9ZH7m8chH7O3Kp3kg4ZbrbxqD2I95_Dl1iUGHTmh-6psIdiFXWA=s250",
+    "image_thumbnail_url": "https://lh3.googleusercontent.com/MiwPzIrPk3e2i1vBsJiCgWMG9h8FJerrKGAoKtlIn34wJLwUyLe9ZH7m8chH7O3Kp3kg4ZbrbxqD2I95_Dl1iUGHTmh-6psIdiFXWA=s128",
+    "image_original_url": null,
+    "animation_url": null,
+    "animation_original_url": null,
+    "name": "(Picnic, lightning). ",
+    "description": null,
+    "external_link": null,
+    "asset_contract": {
+      "address": "0x495f947276749ce646f68ac8c248420045cb7b5e",
+      "asset_contract_type": "semi-fungible",
+      "created_date": "2020-12-02T17:40:53.232025",
+      "name": "OpenSea Collection",
+      "nft_version": null,
+      "opensea_version": "2.0.0",
+      "owner": 102384,
+      "schema_name": "ERC1155",
+      "symbol": "OPENSTORE",
+      "total_supply": null,
+      "description": "",
+      "external_link": null,
+      "image_url": "https://lh3.googleusercontent.com/HMeSm6mM47Wkap8it2rXBbyCIF0wiAXpamQJQidiCmF4wL-zL5sS2UXZuH6jm65kpXy2XwaS1T9gkD7x2UbB34qlwTLMTBHmyqx5qA=s120",
+      "default_to_fiat": false,
+      "dev_buyer_fee_basis_points": 0,
+      "dev_seller_fee_basis_points": 0,
+      "only_proxied_transfers": false,
+      "opensea_buyer_fee_basis_points": 0,
+      "opensea_seller_fee_basis_points": 250,
+      "buyer_fee_basis_points": 0,
+      "seller_fee_basis_points": 250,
+      "payout_address": null
+    },
+    "permalink": "https://opensea.io/assets/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/48037275871633193830421594285625459086251650415150495168122987789753637666817",
+    "collection": {
+      "payment_tokens": [
+        {
+          "id": 13689077,
+          "symbol": "ETH",
+          "address": "0x0000000000000000000000000000000000000000",
+          "image_url": "https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg",
+          "name": "Ether",
+          "decimals": 18,
+          "eth_price": 1,
+          "usd_price": 1765.26
+        },
+        {
+          "id": 4645681,
+          "symbol": "WETH",
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "image_url": "https://openseauserdata.com/files/accae6b6fb3888cbff27a013729c22dc.svg",
+          "name": "Wrapped Ether",
+          "decimals": 18,
+          "eth_price": 1,
+          "usd_price": 1765.26
+        }
+      ],
+      "primary_asset_contracts": [
+        {
+          "address": "0x55256178afe74082c4f9afef7e40fec949c1b499",
+          "asset_contract_type": "non-fungible",
+          "created_date": "2022-01-31T15:34:32.113222",
+          "name": "Philosophical Foxes V2",
+          "nft_version": "3.0",
+          "opensea_version": null,
+          "owner": 93579176,
+          "schema_name": "ERC721",
+          "symbol": "FOX",
+          "total_supply": "0",
+          "description": "#Philosophical Foxes are pixels with inner lives 💭🦊\r\n\r\nThey're much more than a profile picture - they're NFTs that think, wonder, hide, and feel. They're real characters, just like those in the pages of iconic books or in our favorite shows. \r\n\r\n💡 *How do we do that?* 💡 By giving Foxes rich traits that go far beyond the physical. Every one of our NFTs has a thought, philosophy, virtues and baggage attached to them. Some even have secrets! 🤫 🔐\r\n\r\n💭 *What are the thought bubbles?* 💭 These are \"solo thoughts.\" They have philosophies, virtues, baggage, and secrets of their own. By collecting them, you add more dimension to your Fox. We also ave some super secret plans about how else solo thoughts will be used. But we can't spoil the fun just yet 😉 🦊 🤫\r\n\r\nClick into each Fox or thought to explore their unique characteristics!",
+          "external_link": "http://www.philosophicalfoxes.com",
+          "image_url": "https://lh3.googleusercontent.com/8JzLJbmg9U8XBigqC6YIzCNAbpEz9DNuknml0P9K1IeyrFf5K9JNNd083WAlUjpRS16OsyVjOFRY3vwLdUCOKvKxGWJsmy9USrWHwg=s120",
+          "default_to_fiat": false,
+          "dev_buyer_fee_basis_points": 0,
+          "dev_seller_fee_basis_points": 500,
+          "only_proxied_transfers": false,
+          "opensea_buyer_fee_basis_points": 0,
+          "opensea_seller_fee_basis_points": 250,
+          "buyer_fee_basis_points": 0,
+          "seller_fee_basis_points": 750,
+          "payout_address": "0x68bb9fdd68c692def11f1351c73ee1af798540d4"
+        }
+      ],
+      "traits": {},
+      "stats": {
+        "one_day_volume": 0,
+        "one_day_change": 0,
+        "one_day_sales": 0,
+        "one_day_average_price": 0,
+        "seven_day_volume": 0,
+        "seven_day_change": -1,
+        "seven_day_sales": 0,
+        "seven_day_average_price": 0,
+        "thirty_day_volume": 3.8419999999999996,
+        "thirty_day_change": -0.40745538036452417,
+        "thirty_day_sales": 25,
+        "thirty_day_average_price": 0.15367999999999998,
+        "total_volume": 672.7497982444428,
+        "total_sales": 1794,
+        "total_supply": 1411,
+        "count": 1411,
+        "num_owners": 702,
+        "average_price": 0.37499988753870833,
+        "num_reports": 0,
+        "market_cap": 0,
+        "floor_price": 0
+      },
+      "banner_image_url": "https://lh3.googleusercontent.com/GdKsN7qTeH8Br-cyKL0QU0ybPYf1xQ_FNodnPgz-bWxlWFdxIxxU4Z9vXfkxQr6_v7rPUQNEuqe5HtJYS4kGIiUIzbIw1TQ7Zax8sFg=s2500",
+      "chat_url": null,
+      "created_date": "2021-10-11T13:06:51.272783",
+      "default_to_fiat": false,
+      "description": "#Philosophical Foxes are pixels with inner lives 💭🦊\r\n\r\nThey're much more than a profile picture - they're NFTs that think, wonder, hide, and feel. They're real characters, just like those in the pages of iconic books or in our favorite shows. \r\n\r\n💡 *How do we do that?* 💡 By giving Foxes rich traits that go far beyond the physical. Every one of our NFTs has a thought, philosophy, virtues and baggage attached to them. Some even have secrets! 🤫 🔐\r\n\r\n💭 *What are the thought bubbles?* 💭 These are \"solo thoughts.\" They have philosophies, virtues, baggage, and secrets of their own. By collecting them, you add more dimension to your Fox. We also ave some super secret plans about how else solo thoughts will be used. But we can't spoil the fun just yet 😉 🦊 🤫\r\n\r\nClick into each Fox or thought to explore their unique characteristics!",
+      "dev_buyer_fee_basis_points": "0",
+      "dev_seller_fee_basis_points": "500",
+      "discord_url": "https://discord.gg/philosophical-foxes",
+      "display_data": {
+        "card_display_style": "cover"
+      },
+      "external_url": "http://www.philosophicalfoxes.com",
+      "featured": false,
+      "featured_image_url": "https://lh3.googleusercontent.com/NpBvIAbx5fik_unzcVX2drAqCrZVtaoumoWumo_ZOysOJ5Dq_riizqJjTZ_cTxbc3VAbvZyXpc4kOVDKtkqpAoCHlsawFrmet_DL0j8=s300",
+      "hidden": false,
+      "safelist_request_status": "verified",
+      "image_url": "https://lh3.googleusercontent.com/8JzLJbmg9U8XBigqC6YIzCNAbpEz9DNuknml0P9K1IeyrFf5K9JNNd083WAlUjpRS16OsyVjOFRY3vwLdUCOKvKxGWJsmy9USrWHwg=s120",
+      "is_subject_to_whitelist": false,
+      "large_image_url": "https://lh3.googleusercontent.com/NpBvIAbx5fik_unzcVX2drAqCrZVtaoumoWumo_ZOysOJ5Dq_riizqJjTZ_cTxbc3VAbvZyXpc4kOVDKtkqpAoCHlsawFrmet_DL0j8=s300",
+      "medium_username": null,
+      "name": "Philosophical Foxes",
+      "only_proxied_transfers": false,
+      "opensea_buyer_fee_basis_points": "0",
+      "opensea_seller_fee_basis_points": "250",
+      "payout_address": "0x68bb9fdd68c692def11f1351c73ee1af798540d4",
+      "require_email": false,
+      "short_description": null,
+      "slug": "philosophicalfoxes",
+      "telegram_url": null,
+      "twitter_username": "FoxesNFT",
+      "instagram_username": null,
+      "wiki_url": null,
+      "is_nsfw": false
+    },
+    "decimals": null,
+    "token_metadata": null,
+    "is_nsfw": false,
+    "owner": {
+      "user": {
+        "username": "NullAddress"
+      },
+      "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/1.png",
+      "address": "0x0000000000000000000000000000000000000000",
+      "config": ""
+    },
+    "sell_orders": null,
+    "seaport_sell_orders": null,
+    "creator": {
+      "user": {
+        "username": "PhilosophicalFoxes"
+      },
+      "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/21.png",
+      "address": "0x6a34227740d877ca2e21fa0d270733b3ceca67b8",
+      "config": ""
+    },
+    "traits": [
+      {
+        "trait_type": "Fur",
+        "value": "Natural",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 88,
+        "order": null
+      },
+      {
+        "trait_type": "Virtues",
+        "value": "Knack for Accents",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 7,
+        "order": null
+      },
+      {
+        "trait_type": "Virtues",
+        "value": "A Fine Set of Eyebrows",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 4,
+        "order": null
+      },
+      {
+        "trait_type": "Virtues",
+        "value": "Funny",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 7,
+        "order": null
+      },
+      {
+        "trait_type": "Species",
+        "value": "Corsac",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 6,
+        "order": null
+      },
+      {
+        "trait_type": "Baggage",
+        "value": "Just shy",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 6,
+        "order": null
+      },
+      {
+        "trait_type": "Philosophy",
+        "value": "Serialism",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 2,
+        "order": null
+      },
+      {
+        "trait_type": "Baggage",
+        "value": "Avoids confrontation ",
+        "display_type": null,
+        "max_value": null,
+        "trait_count": 1,
+        "order": null
+      }
+    ],
+    "last_sale": {
+      "asset": {
+        "decimals": null,
+        "token_id": "48037275871633193830421594285625459086251650415150495168122987789753637666817"
+      },
+      "asset_bundle": null,
+      "event_type": "successful",
+      "event_timestamp": "2021-10-17T18:16:30",
+      "auction_type": null,
+      "total_price": "300000000000000000",
+      "payment_token": {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "image_url": "https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg",
+        "name": "Ether",
+        "decimals": 18,
+        "eth_price": "1.000000000000000",
+        "usd_price": "1764.420000000000073000"
+      },
+      "transaction": {
+        "block_hash": "0xd97e3e3feb372cf98271d78bc1d1d37da9ea6f967ab8e31cd388ad5bceb306eb",
+        "block_number": "13436974",
+        "from_account": {
+          "user": {
+            "username": null
+          },
+          "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/28.png",
+          "address": "0x643d06108d4694605b266dfd85b1816baccfb55d",
+          "config": ""
+        },
+        "id": 183200291,
+        "timestamp": "2021-10-17T18:16:30",
+        "to_account": {
+          "user": {
+            "username": "OpenSea-Orders"
+          },
+          "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/22.png",
+          "address": "0x7be8076f4ea4a4ad08075c2508e481d6c946d12b",
+          "config": "verified"
+        },
+        "transaction_hash": "0xdb646f085fa72242addcb59d5164adcc43c4beddcf0de01eb59508796235abd0",
+        "transaction_index": "355"
+      },
+      "created_date": "2021-10-17T18:17:22.421599",
+      "quantity": "1"
+    },
+    "top_bid": null,
+    "listing_date": null,
+    "is_presale": true,
+    "transfer_fee_payment_token": null,
+    "transfer_fee": null,
+    "related_assets": [],
+    "orders": null,
+    "auctions": [],
+    "supports_wyvern": true,
+    "top_ownerships": [
+      {
+        "owner": {
+          "user": {
+            "username": null
+          },
+          "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/28.png",
+          "address": "0x643d06108d4694605b266dfd85b1816baccfb55d",
+          "config": ""
+        },
+        "quantity": "1"
+      }
+    ],
+    "ownership": null,
+    "highest_buyer_commitment": null,
+    "token_id": "48037275871633193830421594285625459086251650415150495168122987789753637666817"
+  }

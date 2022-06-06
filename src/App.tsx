@@ -1,8 +1,12 @@
 import './App.css';
 import { Canvas } from '@react-three/fiber';
 import { Box } from './models/box';
+import { runMe } from './models/gettingData/parseV1';
+import { useState } from 'react';
 
 function App() {
+  let [result, setResult] = useState('');
+
   return (
     <div className="App">
       <header className="App-header">
@@ -23,6 +27,10 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={async () => {
+          setResult(await runMe());
+        }}>Click Me!</button>
+        <textarea id="textarea" value={result} rows={10} cols={50} />
       </header>
     </div>
   );

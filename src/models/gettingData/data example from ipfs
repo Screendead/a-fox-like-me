@@ -1,0 +1,40 @@
+{
+    "image": "ipfs://QmRRHxPfqjRvswqquE4SsB8gaA2zWRwgaUK8w5MkBmx1Xj/1.png",
+    "tokenId": 1,
+    "description": "Thought #1",
+    "name": "The Philadelphia Experiment.",
+    "attributes": [
+        {
+            "trait_type": "Philosophy",
+            "value": "Solipsism"
+        },
+        {
+            "trait_type": "Virtues",
+            "value": "Annual Pass to the MoMA (2)"
+        },
+        {
+            "trait_type": "Virtues",
+            "value": "Strangely graceful"
+        },
+        {
+            "trait_type": "Virtues",
+            "value": "Remembers Song Lyrics"
+        },
+        {
+            "trait_type": "Virtues",
+            "value": "Kind to the elderly"
+        },
+        {
+            "trait_type": "Baggage",
+            "value": "Snob"
+        },
+        {
+            "trait_type": "Baggage",
+            "value": "Does that thing on LinkedIn where each line is a separate paragraph"
+        },
+        {
+            "trait_type": "Baggage",
+            "value": "Big Gary Vaynerchuk Guy"
+        }
+    ]
+}
