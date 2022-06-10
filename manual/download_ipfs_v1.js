@@ -1,20 +1,6 @@
 import fs from 'fs/promises';
 import fetch from 'node-fetch';
 import data from './V1FoxesOSData.json' assert {type: 'json'};
-import { initializeApp } from 'firebase/app';
-import { getStorage, connectStorageEmulator, ref, uploadBytes } from 'firebase/storage';
-
-
-initializeApp({
-  apiKey: "AIzaSyChU5p_9V-cthnqTWW3F6RmPTzXj1k0cgg",
-  authDomain: "a-fox-like-me.firebaseapp.com",
-  projectId: "a-fox-like-me",
-  storageBucket: "a-fox-like-me.appspot.com",
-  messagingSenderId: "63753981593",
-  appId: "1:63753981593:web:4de94fe39bb4d3d18c3208",
-});
-const storage = getStorage();
-connectStorageEmulator(storage, 'localhost', 9199);
 
 
 async function download() {

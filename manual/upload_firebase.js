@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import admin from 'firebase-admin';
-import serviceAccount from './a-fox-like-me-firebase-adminsdk-w09a1-5eacc98ceb.json' assert {type: 'json'};
+import serviceAccount from './serviceAccount.json' assert {type: 'json'};
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
