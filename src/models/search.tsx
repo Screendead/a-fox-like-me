@@ -1,5 +1,5 @@
 import { Fox } from './fox/Fox';
-import foxes from './foxes.json';
+import foxes from '../data/data.json';
 
 export function search(searchTerm: string): Fox[] {
   const searchTermLower = searchTerm.toLowerCase();
