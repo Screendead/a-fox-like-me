@@ -4,6 +4,8 @@ import { Find } from './routes/find/Find';
 import { AFoxLikeMe } from './routes/a-fox-like-me/AFoxLikeMe';
 
 function App() {
+  let [result, setResult] = useState('');
+
   return (
     <Routes>
       <Route path="/" element={<Find />} />
