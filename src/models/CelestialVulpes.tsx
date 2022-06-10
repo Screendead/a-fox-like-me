@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { useEffect, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Foximity } from './fox/Foximity';
-import { FoxPlanet } from './fox-planet/FoxPlanet';
+import { FoxPlanetWrapper } from './fox-planet/FoxPlanetWrapper';
 
 
 export function CelestialVulpes(props: { foxes: Foximity[] }) {
@@ -48,7 +48,7 @@ export function CelestialVulpes(props: { foxes: Foximity[] }) {
           0,
         );
 
-        foxPlanets.push(<FoxPlanet key={_f.fox.tokenId} position={position} fox={_f.fox} />);
+        foxPlanets.push(<FoxPlanetWrapper key={_f.fox.tokenId} position={position} fox={_f.fox} />);
       }
     }
     setFoxPlanets(foxPlanets);

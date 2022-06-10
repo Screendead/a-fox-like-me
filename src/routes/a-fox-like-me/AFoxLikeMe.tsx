@@ -6,24 +6,27 @@ import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
 import { FoxPlanet } from "../../models/fox-planet/FoxPlanet";
 import { Foximity } from "../../models/fox/Foximity";
+import { FoxPlanetWrapper } from "../../models/fox-planet/FoxPlanetWrapper";
+import { useFirebaseStorageImage } from "../../hooks/useFirebaseStorageImage";
 
 export function AFoxLikeMe() {
   let { id } = useParams();
 
-  const [fox, setFox] = useState<Fox | undefined>();
+  const [fox, setFoximity] = useState<Foximity | undefined>();
   const [foximities, setFoximities] = useState<Foximity[]>([]);
+  const imageURL = useFirebaseStorageImage(fox?.fox);
 
   useEffect(() => {
     if (id) {
       try {
-        let _f = foximity(parseInt(id));
-        setFox(_f.find(f => f.fox.tokenId === parseInt(id!))?.fox);
+        let _f = foximity(id);
+        setFoximity(_f.find(f => f.fox.tokenId === id));
         setFoximities(_f);
       } catch (e) {
         console.log(e);
       }
     } else {
-      setFox(undefined);
+      setFoximity(undefined);
       setFoximities([]);
     }
   }, [id]);
@@ -41,21 +44,21 @@ export function AFoxLikeMe() {
           position: [0, 0, 25],
         }}>
           <ambientLight />
-          {fox && <FoxPlanet position={[0, 0, 0]} fox={fox} />}
+          {fox && <FoxPlanetWrapper position={[0, 0, 0]} fox={fox?.fox} />}
         </Canvas>
       </div>
       {fox && <div className="display top-left">
         <div className="internalDisplay">
           <div className="heading">
-            <img className="pfp" src={fox.image.replace('ipfs://', 'https://ipfs.io/ipfs/')} alt="pfp" />
+            <img className="pfp" src={imageURL} alt="pfp" />
             <span>
-              <h2 className="component-title">{fox.name.toUpperCase()}</h2>
-              <h3 className="component-subtitle">#{fox.tokenId}</h3>
+              <h2 className="component-title">{fox?.fox.name.toUpperCase()}</h2>
+              <h3 className="component-subtitle">#{fox?.tokenID}</h3>
             </span>
           </div>
           <ul>
-            {fox.attributes.map((a, i) => {
-              return (<li key={`fox-${fox.tokenId}-attr-${i}`}>
+            {fox?.fox.attributes.map((a, i) => {
+              return (<li key={`fox-${fox?.tokenID}-attr-${i}`}>
                 <span className="trait-name">{a.trait_type}</span>: {a.value}
               </li>);
             })}
@@ -78,8 +81,12 @@ export function AFoxLikeMe() {
             <tbody>
               {foximities
                 .slice(0, 10)
-                .map(f => (<tr key={f.fox.tokenId}>
-                    <td>{f.fox.tokenId}</td>
+                .map(f => (<tr key={f.tokenID}>
+                    <td>
+                      <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
+                        {f.tokenID}
+                      </Link>
+                    </td>
                     <td>
                       <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
                         {f.fox.name}
@@ -108,8 +115,12 @@ export function AFoxLikeMe() {
               {[...foximities]
                 .sort((a, b) => a.proximityPercentage - b.proximityPercentage)
                 .slice(0, 10)
-                .map(f => (<tr key={f.fox.tokenId}>
-                    <td>{f.fox.tokenId}</td>
+                .map(f => (<tr key={f.tokenID}>
+                    <td>
+                      <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
+                        {f.tokenID}
+                      </Link>
+                    </td>
                     <td>
                       <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
                         {f.fox.name}

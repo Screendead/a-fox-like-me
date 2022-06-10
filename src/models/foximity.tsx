@@ -1,10 +1,10 @@
 import { Fox } from './fox/Fox';
 import { Foximity } from './fox/Foximity';
-import foxesJSON from './foxes.json';
+import foxesJSON from '../data/data.json';
 
 const foxes = foxesJSON.map(fox => fox as Fox);
 
-export function foximity(tokenID: number): Foximity[] {
+export function foximity(tokenID: string): Foximity[] {
   let seen: {[key: string]: boolean} = {};
 
   const myFox = foxes.find(fox => fox.tokenId === tokenID);
@@ -66,6 +66,7 @@ export function foximity(tokenID: number): Foximity[] {
 
       return {
         fox,
+        tokenID: fox.tokenId.length > 32 ? `G${fox.tokenId.slice(fox.tokenId.length - 8)}` : fox.tokenId,
         proximity,
         proximityPercentage: Math.round(proximity / maxProximity * 10000) / 100,
       };
