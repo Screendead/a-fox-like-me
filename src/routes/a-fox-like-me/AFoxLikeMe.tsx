@@ -1,10 +1,8 @@
 import "./AFoxLikeMe.scss";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Fox } from "../../models/fox/Fox";
 import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
-import { FoxPlanet } from "../../models/fox-planet/FoxPlanet";
 import { Foximity } from "../../models/fox/Foximity";
 import { FoxPlanetWrapper } from "../../models/fox-planet/FoxPlanetWrapper";
 import { useFirebaseStorageImage } from "../../hooks/useFirebaseStorageImage";

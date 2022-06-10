@@ -1,5 +1,4 @@
 import './FoxPlanet.scss';
-import { useEffect, useState } from 'react';
 import { Fox } from '../fox/Fox';
 import { FoxPlanet } from './FoxPlanet';
 import { useFirebaseStorageImage } from '../../hooks/useFirebaseStorageImage';

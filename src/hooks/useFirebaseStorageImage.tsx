@@ -25,7 +25,7 @@ export function useFirebaseStorageImage(fox: Fox | undefined) {
     };
 
     loadImage();
-  }, [fox?.tokenId]);
+  }, [fox]);
 
   return imageURL;
 }
