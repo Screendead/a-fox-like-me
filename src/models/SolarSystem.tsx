@@ -5,7 +5,7 @@ import { Foximity } from './fox/Foximity';
 import { FoxPlanetWrapper } from './fox-planet/FoxPlanetWrapper';
 
 
-export function CelestialVulpes(props: { foxes: Foximity[] }) {
+export function SolarSystem(props: { foxes: Foximity[] }) {
   const [rings, setRings] = useState<Foximity[][]>();
   const [minProxmity, setMinProxmity] = useState(0);
   const [maxProxmity, setMaxProxmity] = useState(0);

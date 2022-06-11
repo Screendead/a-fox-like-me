@@ -4,7 +4,7 @@ import { FoxPlanet } from './FoxPlanet';
 import { useFirebaseStorageImage } from '../../hooks/useFirebaseStorageImage';
 
 export function FoxPlanetWrapper(props: JSX.IntrinsicElements['mesh'] & { fox: Fox }) {
-  const imageURL = useFirebaseStorageImage(props.fox);
+  const imageURL = useFirebaseStorageImage(props.fox, '240x240');
 
   if (!imageURL) return <></>;
 

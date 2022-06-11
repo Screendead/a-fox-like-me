@@ -12,7 +12,7 @@ export function AFoxLikeMe() {
 
   const [fox, setFoximity] = useState<Foximity | undefined>();
   const [foximities, setFoximities] = useState<Foximity[]>([]);
-  const imageURL = useFirebaseStorageImage(fox?.fox);
+  const imageURL = useFirebaseStorageImage(fox?.fox, '120x120');
 
   useEffect(() => {
     if (id) {

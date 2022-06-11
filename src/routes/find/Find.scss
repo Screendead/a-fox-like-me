@@ -20,6 +20,15 @@
   }
 }
 
+.fox-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+
 .fox-link {
   color: #fff;
   font-size: 1.5rem;

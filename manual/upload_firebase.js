@@ -6,14 +6,16 @@ admin.initializeApp({
 });
 
 async function uploadSingle(file) {
-  await admin.storage().bucket('a-fox-like-me.appspot.com').upload(`./foxes_v1/${file}`, {
-    destination: `foxes/v1/${file}`,
+  console.log(`Uploading ${file}...`);
+
+  await admin.storage().bucket('a-fox-like-me.appspot.com').upload(`./foxes_all/${file}`, {
+    destination: `foxes/${file}`,
     metadata: {
       contentType: 'image/png',
     },
   });
 
-  console.log(`Uploaded ${file}`);
+  console.log(`Uploaded ${file}!`);
 }
 
 
@@ -21,15 +23,16 @@ async function upload() {
   let promises = [];
 
   // Get all files in ./foxes
-  let files = await fs.readdir('./foxes_v1');
+  let files = await fs.readdir('./foxes_all');
   files = files.filter(file => file.endsWith('.png'));
+
   for (let i = 0; i < files.length; i++) {
     promises.push(uploadSingle(files[i]));
   }
 
   await Promise.all(promises);
 
-  console.log('Uploaded all files');
+  console.log('Uploaded all files.');
 }
 
 
