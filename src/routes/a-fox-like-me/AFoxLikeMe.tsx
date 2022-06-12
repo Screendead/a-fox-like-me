@@ -4,15 +4,13 @@ import { Link, useParams } from "react-router-dom";
 import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
 import { Foximity } from "../../models/fox/Foximity";
-import { FoxPlanetWrapper } from "../../models/fox-planet/FoxPlanetWrapper";
-import { useFirebaseStorageImage } from "../../hooks/useFirebaseStorageImage";
+import { SolarSystem } from "../../models/SolarSystem";
 
 export function AFoxLikeMe() {
   let { id } = useParams();
 
   const [fox, setFoximity] = useState<Foximity | undefined>();
   const [foximities, setFoximities] = useState<Foximity[]>([]);
-  const imageURL = useFirebaseStorageImage(fox?.fox);
 
   useEffect(() => {
     if (id) {
@@ -42,13 +40,15 @@ export function AFoxLikeMe() {
           position: [0, 0, 25],
         }}>
           <ambientLight />
-          {fox && <FoxPlanetWrapper position={[0, 0, 0]} fox={fox?.fox} />}
+          {foximities && <SolarSystem foxes={foximities} />}
         </Canvas>
       </div>
       {fox && <div className="display top-left">
         <div className="internalDisplay">
           <div className="heading">
-            <img className="pfp" src={imageURL} alt="pfp" />
+            <img className="pfp" src={
+              `https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/${fox.fox.tokenId}_120x120.webp`
+            } alt="pfp" />
             <span>
               <h2 className="component-title">{fox?.fox.name.toUpperCase()}</h2>
               <h3 className="component-subtitle">#{fox?.tokenID}</h3>
@@ -112,7 +112,7 @@ export function AFoxLikeMe() {
             <tbody>
               {[...foximities]
                 .sort((a, b) => a.proximityPercentage - b.proximityPercentage)
-                .slice(0, 10)
+                .slice(0, 5)
                 .map(f => (<tr key={f.tokenID}>
                     <td>
                       <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>

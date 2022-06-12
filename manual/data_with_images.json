@@ -1,0 +1,63 @@
+[
+  {
+    "image": "https://lh3.googleusercontent.com/vJ31pXV6EY_wzBGTfi_VctKjJkdAO7T6NjHqnR4VgAGU1aVva9mpMuHARSK-NOt4-I3ssgasI5nCcvBzbwnm3gzzw7dGBQ6Fvg8Ulw=w=s256",
+    "tokenId": "48037275871633193830421594285625459086251650415150495168122987884311637655553",
+    "description": "",
+    "name": "The leaves had yet to fall.",
+    "attributes": [
+      {
+        "trait_type": "Philosophy",
+        "value": "Transcendentalism"
+      },
+      {
+        "trait_type": "Baggage",
+        "value": "Just gets sad sometimes"
+      },
+      {
+        "trait_type": "Virtues",
+        "value": "Wistful"
+      }
+    ],
+    "images": {
+      "original": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/48037275871633193830421594285625459086251650415150495168122987884311637655553.png",
+      "thumbs": {
+        "32x32": {
+          "webp": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_32x32.webp",
+          "jpeg": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_32x32.jpeg"
+        },
+        "30x30": {
+          "webp": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_30x30.webp",
+          "jpeg": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_30x30.jpeg"
+        },
+        "64x64": {
+          "webp": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_64x64.webp",
+          "jpeg": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_64x64.jpeg"
+        },
+        "60x60": {
+          "webp": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_60x60.webp",
+          "jpeg": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_60x60.jpeg"
+        },
+        "128x128": {
+          "webp": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_128x128.webp",
+          "jpeg": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_128x128.jpeg"
+        },
+        "120x120": {
+          "webp": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_120x120.webp",
+          "jpeg": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_120x120.jpeg"
+        },
+        "256x256": {
+          "webp": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_256x256.webp",
+          "jpeg": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_256x256.jpeg"
+        },
+        "240x240": {
+          "webp": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_240x240.webp",
+          "jpeg": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_240x240.jpeg"
+        },
+        "300x300": {
+          "webp": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_300x300.webp",
+          "jpeg": "https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/48037275871633193830421594285625459086251650415150495168122987884311637655553_300x300.jpeg"
+        }
+      }
+    }
+  }
+]

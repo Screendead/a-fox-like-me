@@ -22,7 +22,7 @@ export function Find() {
       <input className="fox-search" type="text" value={searchTerm} placeholder="Search for your Fox..." onChange={(e) => {
         setSearchTerm(e.target.value);
       }} />
-      {searchTerm && <div>
+      {searchTerm && <div className='fox-links'>
         {searchResults.map(f => <Link key={f.tokenId} className="fox-link" to={`/find/${f.tokenId}`}>
           {f.name}
         </Link>)}

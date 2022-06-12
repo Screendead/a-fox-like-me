@@ -7,4 +7,4 @@ export interface Fox {
     trait_type: string;
     value: string;
   }[];
-}
+};
