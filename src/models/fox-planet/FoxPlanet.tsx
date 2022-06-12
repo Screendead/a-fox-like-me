@@ -20,6 +20,12 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
   const [orbitPosition, setOrbitPosition] = useState<number>();
 
   useEffect(() => {
+    setTexture(undefined);
+    meshRef.current.rotation.z = 0;
+    if (texture) texture.rotation = 0;
+  }, [props.fox]);
+
+  useEffect(() => {
     let _o = props.main ? 0 : props.index! / props.siblingCount! * Math.PI * 2;
     setOrbitPosition(_o);
   }, [props.main, props.index, props.siblingCount]);
