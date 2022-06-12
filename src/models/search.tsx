@@ -1,5 +1,5 @@
 import { Fox } from './fox/Fox';
-import foxes from './foxes.json';
+import foxes from '../data/data.json';
 
 export function search(searchTerm: string): Fox[] {
   const searchTermLower = searchTerm.toLowerCase();
@@ -7,5 +7,5 @@ export function search(searchTerm: string): Fox[] {
     .filter(f => f.name.toLowerCase().includes(searchTermLower))
     .map(f => f as Fox)
     .sort((a, b) => a.name.localeCompare(b.name))
-    .splice(0, 10);
+    .splice(0, 5);
 }
