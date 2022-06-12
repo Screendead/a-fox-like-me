@@ -6,7 +6,7 @@ export const NAME_WEIGHT        = 0.009672;
 export const SPACES_WEIGHT      = 0.010123;
 export const PUNCTUATION_WEIGHT = 0.011233;
 
-export const PHILOSOPHY_VALUE   = 5.034573;
+export const PHILOSOPHY_VALUE   = 6.034573;
 export const SPECIES_VALUE      = 4.945739;
 export const FUR_VALUE          = 2.989221;
 export const VIRTUE_VALUE       = 2.041223;
@@ -23,6 +23,7 @@ export function foximity(tokenID: string): Foximity[] {
   const myFox = foxes.find(fox => fox.tokenId === tokenID);
 
   if (!myFox) {
+    console.error('No fox found with tokenID', tokenID);
     return [];
   }
 
@@ -98,6 +99,8 @@ export function foximity(tokenID: string): Foximity[] {
       proximity += NAME_WEIGHT * (maxNameDiff - Math.abs(myFox.name.length - fox.name.length));
       proximity += SPACES_WEIGHT * (maxSpacesDiff - Math.abs(mySpaces - theirSpaces));
       proximity += PUNCTUATION_WEIGHT * (maxPunctuationDiff - Math.abs(myPunctuation - theirPunctuation));
+
+      proximity = Math.max(proximity, 0);
 
       return {
         fox,

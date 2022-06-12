@@ -1,63 +1,59 @@
-import * as THREE from 'three';
 import { useEffect, useState } from 'react';
-import { useFrame } from '@react-three/fiber';
 import { Foximity } from './fox/Foximity';
-import { FoxPlanetWrapper } from './fox-planet/FoxPlanetWrapper';
+import { FoxPlanet } from './fox-planet/FoxPlanet';
+import { Fox } from './fox/Fox';
+
+
+const ORBITS = [
+  { radius: 2, count: 3 },
+  { radius: 3.5, count: 7 },
+  { radius: 5, count: 11 },
+];
 
 
 export function SolarSystem(props: { foxes: Foximity[] }) {
-  const [rings, setRings] = useState<Foximity[][]>();
-  const [minProxmity, setMinProxmity] = useState(0);
-  const [maxProxmity, setMaxProxmity] = useState(0);
-  const [foxPlanets, setFoxPlanets] = useState<JSX.Element[]>([]);
-  const [rotation, setRotation] = useState(0);
+  const [mainFox, setMainFox] = useState<Fox>();
+  const [orbits, setOrbits] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
-    let rings: Foximity[][] = [];
-    let _min = 100;
-    let _max = 0;
-    for (let fox of props.foxes) {
-      rings[fox.proximity] = rings[fox.proximity] || [];
-      rings[fox.proximity].push(fox);
+    let _orbits = [];
 
-      if (fox.proximityPercentage < _min) _min = fox.proximityPercentage;
-      if (fox.proximityPercentage > _max) _max = fox.proximityPercentage;
+    setMainFox(props.foxes.splice(0, 1)[0].fox);
+
+    for (let i = 0; i < ORBITS.length; i++) {
+      let _f = props.foxes.splice(0, ORBITS[i].count).map((f, j) => {
+        let size = Math.pow(f.proximityPercentage, 2) / 10000 * 2;
+
+        return <FoxPlanet
+          key={`${i}-${j}`}
+          index={j + 1}
+          siblingCount={ORBITS[i].count}
+          fox={f.fox}
+          size={size}
+          orbitRadius={ORBITS[i].radius}
+          imageURL={
+            `https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/${f.fox.tokenId}_240x240.webp`
+          } />
+      });
+
+      _orbits.push(..._f);
     }
-    setRings(rings);
-    setMinProxmity(_min);
-    setMaxProxmity(_max);
+
+    setOrbits(_orbits);
   }, [props.foxes]);
-
-  useFrame(() => {
-    if (!rings) return;
-
-    let foxPlanets: JSX.Element[] = [];
-
-    for (let i = 0; i < rings.length; i++) {
-      if (!rings[i]) continue;
-
-      let thisRingProxmity = (i / rings.length) * (maxProxmity - minProxmity) + minProxmity;
-
-      for (let j = 0; j < rings[i].length; j++) {
-        let _f = rings[i][j];
-        let _c = (j / rings[i].length) * Math.PI * 2;
-
-        let position = new THREE.Vector3(
-          Math.cos(_c + rotation / i) * thisRingProxmity,
-          Math.sin(_c + rotation / i) * thisRingProxmity,
-          0,
-        );
-
-        foxPlanets.push(<FoxPlanetWrapper key={_f.fox.tokenId} position={position} fox={_f.fox} />);
-      }
-    }
-    setFoxPlanets(foxPlanets);
-    setRotation(rotation + 0.01);
-  });
 
   return (
     <>
-      <group>{foxPlanets}</group>
+      {mainFox && <group>
+        <FoxPlanet
+          key={0}
+          main
+          fox={mainFox}
+          imageURL={
+            `https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/${mainFox.tokenId}_240x240.webp`
+          } />
+      </group>}
+      {orbits && <group>{orbits}</group>}
     </>
   );
 }
