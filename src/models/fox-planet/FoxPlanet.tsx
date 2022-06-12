@@ -23,6 +23,10 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
     setTexture(undefined);
     meshRef.current.rotation.z = 0;
     if (texture) texture.rotation = 0;
+
+    // Next line needs to be disabled as we want to run this code on props.fox change, but
+    // NOT on texture change.
+    // eslint-disable-next-line
   }, [props.fox]);
 
   useEffect(() => {
