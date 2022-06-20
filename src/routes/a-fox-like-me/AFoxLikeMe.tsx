@@ -22,7 +22,9 @@ export function AFoxLikeMe() {
     <div className={`display top-left`}>
       <div className="internalDisplay">
         {width <= 1200 && <div>
-          <button onClick={() => setShownDisplay(undefined)}>CLOSE</button>
+          <button className="action-button top-right" onClick={
+            () => setShownDisplay(undefined)
+          }>CLOSE</button>
         </div>}
         <div className="heading">
           <img className="pfp" src={
@@ -47,7 +49,9 @@ export function AFoxLikeMe() {
     <div className="display top-right">
       <div className="internalDisplay">
         {width <= 1200 && <div>
-          <button onClick={() => setShownDisplay(undefined)}>CLOSE</button>
+          <button className="action-button top-right" onClick={
+            () => setShownDisplay(undefined)
+          }>CLOSE</button>
         </div>}
         <div className="heading">
           <h2 className="component-title">KINDRED FOXES</h2>
@@ -85,7 +89,9 @@ export function AFoxLikeMe() {
     <div className="display bottom-right">
       <div className="internalDisplay">
         {width <= 1200 && <div>
-          <button onClick={() => setShownDisplay(undefined)}>CLOSE</button>
+          <button className="action-button top-right" onClick={
+            () => setShownDisplay(undefined)
+          }>CLOSE</button>
         </div>}
         <div className="heading">
           <h2 className="component-title">DISTANT FOXES</h2>
@@ -159,13 +165,13 @@ export function AFoxLikeMe() {
       </div>
       {width <= 1200
         ? (shownDisplay ? shownDisplay : <>
-          <button className="top-left" onClick={() => {
+          <button className="action-button top-left" onClick={() => {
             setShownDisplay(info);
           }}>Show Info</button>
-          <button className="top-right" onClick={() => {
+          <button className="action-button top-right" onClick={() => {
             setShownDisplay(kindred);
           }}>Show Kindred</button>
-          <button className="bottom-right" onClick={() => {
+          <button className="action-button bottom-right" onClick={() => {
             setShownDisplay(distant);
           }}>Show Distant</button>
         </>)
