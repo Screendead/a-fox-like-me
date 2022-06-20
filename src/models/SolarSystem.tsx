@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Foximity } from './fox/Foximity';
 import { FoxPlanet } from './fox-planet/FoxPlanet';
 import { Fox } from './fox/Fox';
+import { NavigateFunction } from 'react-router-dom';
 
 
 const ORBITS = [
@@ -11,7 +12,10 @@ const ORBITS = [
 ];
 
 
-export function SolarSystem(props: { foxes: Foximity[] }) {
+export function SolarSystem(props: {
+  foxes: Foximity[],
+  navigate: NavigateFunction,
+}) {
   const [mainFox, setMainFox] = useState<Fox>();
   const [orbits, setOrbits] = useState<JSX.Element[]>([]);
 
@@ -33,14 +37,15 @@ export function SolarSystem(props: { foxes: Foximity[] }) {
           orbitRadius={ORBITS[i].radius}
           imageURL={
             `https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/${f.fox.tokenId}_240x240.webp`
-          } />
+          }
+          navigate={props.navigate} />
       });
 
       _orbits.push(..._f);
     }
 
     setOrbits(_orbits);
-  }, [props.foxes]);
+  }, [props.foxes, props.navigate]);
 
   return (
     <>
@@ -51,7 +56,8 @@ export function SolarSystem(props: { foxes: Foximity[] }) {
           fox={mainFox}
           imageURL={
             `https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/${mainFox.tokenId}_240x240.webp`
-          } />
+          }
+          navigate={props.navigate} />
       </group>}
       {orbits && <group>{orbits}</group>}
     </>
