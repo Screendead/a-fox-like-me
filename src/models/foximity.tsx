@@ -17,8 +17,6 @@ export const SECRET_VALUE        = 1.908723;
 const foxes = foxesJSON.map(fox => fox as Fox);
 
 export function foximity(tokenID: string): Foximity[] {
-  console.time('foximity');
-
   let seen: {[key: string]: boolean} = {};
 
   const myFox = foxes.find(fox => fox.tokenId === tokenID);
@@ -117,8 +115,6 @@ export function foximity(tokenID: string): Foximity[] {
       };
     })
     .sort((a, b) => b.proximityPercentage - a.proximityPercentage);
-
-  console.timeEnd('foximity');
 
   return result;
 }

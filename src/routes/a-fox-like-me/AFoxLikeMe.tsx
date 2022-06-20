@@ -1,6 +1,6 @@
 import "./AFoxLikeMe.scss";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
 import { Foximity } from "../../models/fox/Foximity";
@@ -8,6 +8,7 @@ import { SolarSystem } from "../../models/SolarSystem";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 export function AFoxLikeMe() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const { width } = useWindowDimensions();
 
@@ -153,7 +154,7 @@ export function AFoxLikeMe() {
             position: [0, 0, 25],
           }}>
           <ambientLight />
-          {foximities && <SolarSystem foxes={foximities} />}
+          {foximities && <SolarSystem foxes={foximities} navigate={navigate} />}
         </Canvas>
       </div>
       {width <= 1200
