@@ -45,7 +45,7 @@ export function SolarSystem(props: {
     }
 
     setOrbits(_orbits);
-  }, [props.foxes]);
+  }, [props.foxes, props.navigate]);
 
   return (
     <>
