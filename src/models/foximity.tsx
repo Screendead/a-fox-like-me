@@ -2,16 +2,17 @@ import { Fox } from './fox/Fox';
 import { Foximity } from './fox/Foximity';
 import foxesJSON from '../data/data.json';
 
-export const NAME_WEIGHT        = 0.009672;
-export const SPACES_WEIGHT      = 0.010123;
-export const PUNCTUATION_WEIGHT = 0.011233;
+export const NAME_WEIGHT         = 0.042671;
+export const SPACES_WEIGHT       = 0.050129;
+export const PUNCTUATION_WEIGHT  = 0.041237;
+export const AVERAGE_WORD_LENGTH = 0.51123;
 
-export const PHILOSOPHY_VALUE   = 6.034573;
-export const SPECIES_VALUE      = 4.945739;
-export const FUR_VALUE          = 2.989221;
-export const VIRTUE_VALUE       = 2.041223;
-export const BAGGAGE_VALUE      = 2.148235;
-export const SECRET_VALUE       = 1.908723;
+export const PHILOSOPHY_VALUE    = 4.034573;
+export const SPECIES_VALUE       = 3.945739;
+export const FUR_VALUE           = 2.989221;
+export const VIRTUE_VALUE        = 2.041223;
+export const BAGGAGE_VALUE       = 2.148235;
+export const SECRET_VALUE        = 1.908723;
 
 const foxes = foxesJSON.map(fox => fox as Fox);
 
@@ -36,10 +37,12 @@ export function foximity(tokenID: string): Foximity[] {
 
   let mySpaces = (myFox.name.match(/\s/g) || []).length;
   let myPunctuation = (myFox.name.match(/\W/g) || []).filter(str => str !== ' ').length;
+  let myAverageWordLength = (myFox.name.match(/[a-zA-Z]+/g) || []).length;
 
   let maxNameDiff        = Math.max(myFox.name.length, 50 - myFox.name.length + 1) - 2;
-  let maxSpacesDiff      = Math.max(mySpaces, 10 - mySpaces) - 0;
-  let maxPunctuationDiff = Math.max(myPunctuation, 6 - myPunctuation) - 0;
+  let maxSpacesDiff      = Math.max(mySpaces, 10 - mySpaces);
+  let maxPunctuationDiff = Math.max(myPunctuation, 6 - myPunctuation);
+  let maxAverageWordLengthDiff = Math.max(myAverageWordLength, 17 - myAverageWordLength + 1) - 1;
 
   let maxProximity = PHILOSOPHY_VALUE * (myPhilosophy ? 1 : 0)
       + SPECIES_VALUE * (mySpecies ? 1 : 0)
@@ -49,7 +52,8 @@ export function foximity(tokenID: string): Foximity[] {
       + SECRET_VALUE * (myHasSecret ? 1 : 0)
       + NAME_WEIGHT * maxNameDiff // Min name length is 2, max is 50
       + SPACES_WEIGHT * maxSpacesDiff // Min spaces is 0, max is 10
-      + PUNCTUATION_WEIGHT * maxPunctuationDiff; // Min punctuation is 0, max is 9
+      + PUNCTUATION_WEIGHT * maxPunctuationDiff // Min punctuation is 0, max is 9
+      + AVERAGE_WORD_LENGTH * maxAverageWordLengthDiff; // Min average word length is 1, max is 17
 
   let result = foxes
     .filter(function(item) {
@@ -67,6 +71,7 @@ export function foximity(tokenID: string): Foximity[] {
 
       let theirSpaces = (fox.name.match(/\s/g) || []).length;
       let theirPunctuation = (fox.name.match(/\W/g) || []).filter(str => str !== ' ').length;
+      let theirAverageWordLength = (fox.name.match(/[a-zA-Z]+/g) || []).length;
 
       if (myPhilosophy && myPhilosophy.value === theirPhilosophy?.value) {
         proximity += PHILOSOPHY_VALUE;
@@ -99,8 +104,10 @@ export function foximity(tokenID: string): Foximity[] {
       proximity += NAME_WEIGHT * (maxNameDiff - Math.abs(myFox.name.length - fox.name.length));
       proximity += SPACES_WEIGHT * (maxSpacesDiff - Math.abs(mySpaces - theirSpaces));
       proximity += PUNCTUATION_WEIGHT * (maxPunctuationDiff - Math.abs(myPunctuation - theirPunctuation));
+      proximity += AVERAGE_WORD_LENGTH * (maxAverageWordLengthDiff - Math.abs(myAverageWordLength - theirAverageWordLength));
 
       proximity = Math.max(proximity, 0);
+      proximity = Math.min(proximity, maxProximity);
 
       return {
         fox,
