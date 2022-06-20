@@ -1,6 +1,6 @@
 import "./AFoxLikeMe.scss";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { foximity } from "../../models/foximity";
 import { Canvas } from "@react-three/fiber";
 import { Foximity } from "../../models/fox/Foximity";
@@ -9,12 +9,10 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 export function AFoxLikeMe() {
   const { id } = useParams();
-  const location = useLocation();
   const { width } = useWindowDimensions();
 
   const [fox, setFoximity] = useState<Foximity | undefined>();
   const [foximities, setFoximities] = useState<Foximity[]>([]);
-  const [locationUpdates, setLocationUpdates] = useState<number>(0);
 
   const [shownDisplay, setShownDisplay] = useState<JSX.Element>();
 
@@ -126,11 +124,6 @@ export function AFoxLikeMe() {
       </div>
     </div>
   );
-
-  useEffect(() => {
-    console.log("AFoxLikeMe.useEffect");
-    setLocationUpdates(locationUpdates + 1);
-  }, [location]);
 
   useEffect(() => {
     if (id) {

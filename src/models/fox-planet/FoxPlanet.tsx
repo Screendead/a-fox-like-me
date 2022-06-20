@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Fox } from '../fox/Fox';
 import { useTexture } from '@react-three/drei';
-import { useNavigate } from 'react-router-dom';
 
 export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
   main?: boolean,
