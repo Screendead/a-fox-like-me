@@ -7,9 +7,10 @@ export function useAnalytics() {
   const [analytics, setAnalytics] = useState<Analytics>();
 
   useEffect(() => {
-    const _analytics = getAnalytics(app);
-
-    setAnalytics(_analytics);
+    if (process.env.NODE_ENV === 'production') {
+      const _analytics = getAnalytics(app);
+      setAnalytics(_analytics);
+    }
   }, [app]);
 
   return analytics;

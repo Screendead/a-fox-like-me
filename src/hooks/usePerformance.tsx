@@ -7,9 +7,10 @@ export function usePerformance() {
   const [performance, setPerformance] = useState<FirebasePerformance>();
 
   useEffect(() => {
-    const _performance = getPerformance(app);
-
-    setPerformance(_performance);
+    if (process.env.NODE_ENV === 'production') {
+      const _performance = getPerformance(app);
+      setPerformance(_performance);
+    }
   }, [app]);
 
   return performance;

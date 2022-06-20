@@ -13,10 +13,8 @@ function App() {
   const analytics = useAnalytics();
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      if (performance) {
-        performance.dataCollectionEnabled = true;
-      }
+    if (performance) {
+      performance.dataCollectionEnabled = true;
     }
   }, [performance]);
 
