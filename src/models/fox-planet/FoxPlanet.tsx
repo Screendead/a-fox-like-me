@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Fox } from '../fox/Fox';
 import { useTexture } from '@react-three/drei';
+import { NavigateFunction } from 'react-router-dom';
 
 export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
   main?: boolean,
@@ -13,9 +14,11 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
   size?: number,
   orbitRadius?: number,
   imageURL: string,
+  navigate: NavigateFunction,
 }) {
   // const navigate = useNavigate();
   const meshRef = useRef<THREE.Mesh>(null!);
+  const meshRefMain = useRef<THREE.Mesh>(null!);
   const [texture, setTexture] = useState<THREE.Texture>();
   const [hover, setHover] = useState(false);
   const [orbitPosition, setOrbitPosition] = useState<number>();
@@ -25,42 +28,69 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
     setOrbitPosition(_o);
   }, [props.main, props.index, props.siblingCount]);
 
+  useEffect(() => {
+    meshRef.current.rotation.z = 0;
+    if (props.main) meshRefMain.current.rotation.z = 0;
+
+    if (texture) {
+      texture.rotation = 0;
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.imageURL]);
+
   useTexture(props.imageURL, tx => {
     tx = tx as THREE.Texture;
     tx.wrapS = tx.wrapT = THREE.RepeatWrapping;
     tx.repeat.set(1, 1);
     tx.center.set(0.5, 0.5);
 
-    if (!texture) {
-      meshRef.current.rotation.z = 0;
-      tx.rotation = 0;
-    }
     setTexture(tx);
   });
 
   useFrame((_, delta, __) => {
-    if (!texture || !orbitPosition) return;
+    if (!texture) return;
+
+    let _dr = delta * (props.size ?? 1);
+
+    meshRef.current.rotation.z += _dr;
+    if (props.main) meshRefMain.current.rotation.z += _dr;
+
+    texture.rotation -= _dr;
+
+    if (!orbitPosition) return;
 
     setOrbitPosition(orbitPosition + delta / props.orbitRadius!);
 
     meshRef.current.position.x = Math.cos(orbitPosition) * props.orbitRadius!;
     meshRef.current.position.y = Math.sin(orbitPosition) * props.orbitRadius!;
 
-    meshRef.current.rotation.z += delta;
-    texture.rotation -= delta;
+    if (props.main) {
+      meshRefMain.current.position.x = Math.cos(orbitPosition) * props.orbitRadius!;
+      meshRefMain.current.position.y = Math.sin(orbitPosition) * props.orbitRadius!;
+    }
   });
 
   return (
-    <mesh
-      {...props}
-      onPointerOver={() => setHover(true)}
-      onPointerOut={() => setHover(false)}
-      // onClick={() => navigate(`/find/${props.fox.tokenId}`)}
-      ref={meshRef}>
-      <circleGeometry args={[props.size || 0.75, 8]} />
-      <meshStandardMaterial
-        color={hover ? '#ffcccc' : '#ffffff'}
-        map={texture} />
-    </mesh>
+    <>
+      <mesh
+        {...props}
+        onPointerOver={() => setHover(true)}
+        onPointerOut={() => setHover(false)}
+        onClick={() => props.navigate(`/find/${props.fox.tokenId}`)}
+        ref={meshRef}>
+        <circleGeometry args={[props.size || 1, 8]} />
+        <meshStandardMaterial
+          color={!props.main && hover ? '#ffcccc' : '#ffffff'}
+          map={texture} />
+      </mesh>
+      {props.main && <mesh
+        {...props}
+        position={[0, 0, -0.001]}
+        ref={meshRefMain}>
+        <circleGeometry args={[(props.size || 1) + 0.05, 8]} />
+        <meshStandardMaterial color={'white'} />
+      </mesh>}
+    </>
   );
 }
