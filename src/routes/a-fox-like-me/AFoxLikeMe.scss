@@ -44,9 +44,9 @@
 }
 
 .display {
-  display: inline-block;
+  display: flex;
 
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.85);
   border: 2px;
   border-style: solid;
   border-radius: 10px;
@@ -55,8 +55,18 @@
 
   margin: 10px;
   min-width: 250px;
-  width: 30%;
   max-width: 500px;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-width: calc(100% - 20px);
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+    height: calc(100% - 20px);
+  }
 }
 
 .internalDisplay {

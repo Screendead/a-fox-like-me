@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Fox } from '../fox/Fox';
 import { useTexture } from '@react-three/drei';
+import { useNavigate } from 'react-router-dom';
 
 export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
   main?: boolean,
@@ -14,6 +15,7 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
   orbitRadius?: number,
   imageURL: string,
 }) {
+  // const navigate = useNavigate();
   const meshRef = useRef<THREE.Mesh>(null!);
   const [texture, setTexture] = useState<THREE.Texture>();
   const [hover, setHover] = useState(false);
@@ -40,12 +42,10 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
   useFrame((_, delta, __) => {
     if (!texture || !orbitPosition) return;
 
-    // if (!props.main) {
-      setOrbitPosition(orbitPosition + delta / (props.orbitRadius! * props.orbitRadius!));
+    setOrbitPosition(orbitPosition + delta / props.orbitRadius!);
 
-      meshRef.current.position.x = Math.cos(orbitPosition) * props.orbitRadius!;
-      meshRef.current.position.y = Math.sin(orbitPosition) * props.orbitRadius!;
-    // }
+    meshRef.current.position.x = Math.cos(orbitPosition) * props.orbitRadius!;
+    meshRef.current.position.y = Math.sin(orbitPosition) * props.orbitRadius!;
 
     meshRef.current.rotation.z += delta;
     texture.rotation -= delta;
@@ -56,8 +56,9 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
       {...props}
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}
+      // onClick={() => navigate(`/find/${props.fox.tokenId}`)}
       ref={meshRef}>
-      <circleGeometry args={[props.size || 1, 8]} />
+      <circleGeometry args={[props.size || 0.75, 8]} />
       <meshStandardMaterial
         color={hover ? '#ffcccc' : '#ffffff'}
         map={texture} />
