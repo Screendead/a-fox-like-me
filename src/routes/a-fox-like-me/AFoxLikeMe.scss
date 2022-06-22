@@ -147,6 +147,13 @@ table {
   }
 }
 
+.back-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
 .action-button {
   background-color: transparent;
   border: 2px solid #fff;

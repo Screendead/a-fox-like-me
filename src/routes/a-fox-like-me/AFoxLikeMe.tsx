@@ -143,6 +143,7 @@ export function AFoxLikeMe() {
 
   return (
     <>
+      <button className="action-button bottom-left" onClick={() => navigate("/")}>Back to Home</button>
       <div className="experience-container">
         <Canvas
           linear

@@ -46,7 +46,7 @@ export function SolarSystem(props: {
       );
 
       let _f = props.foxes.splice(0, ORBITS[i].count).map((f, j) => {
-        let size = f.proximityPercentage / 100;
+        let size = Math.sqrt(f.proximityPercentage / ORBITS[i].radius) * 0.15;
 
         return <FoxPlanet
           key={`${i}-${j}`}
