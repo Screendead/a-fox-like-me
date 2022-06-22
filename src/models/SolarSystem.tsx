@@ -30,7 +30,7 @@ export function SolarSystem(props: {
       _o.push(
         <mesh
           key={`orbit-${i}`}
-          position={[0, 0, 0.001]}
+          position={[0, 0, -0.001]}
         >
           <ringGeometry args={[
             ORBITS[i].radius - 0.01,
