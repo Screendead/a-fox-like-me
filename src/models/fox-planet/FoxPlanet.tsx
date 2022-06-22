@@ -53,10 +53,10 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
 
     let _dr = delta * (props.size ?? 1);
 
-    meshRef.current.rotation.z += _dr;
-    if (props.main) meshRefMain.current.rotation.z += _dr;
+    meshRef.current.rotation.z -= _dr;
+    if (props.main) meshRefMain.current.rotation.z -= _dr;
 
-    texture.rotation -= _dr;
+    texture.rotation += _dr;
 
     if (!orbitPosition) return;
 
