@@ -18,15 +18,35 @@ export function SolarSystem(props: {
 }) {
   const [mainFox, setMainFox] = useState<Fox>();
   const [orbits, setOrbits] = useState<JSX.Element[]>([]);
+  const [orbitPaths, setOrbitPaths] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
+    let _o = [];
     let _orbits = [];
 
     setMainFox(props.foxes.splice(0, 1)[0].fox);
 
     for (let i = 0; i < ORBITS.length; i++) {
+      _o.push(
+        <mesh
+          key={`orbit-${i}`}
+          position={[0, 0, 0.001]}
+        >
+          <ringGeometry args={[
+            ORBITS[i].radius - 0.01,
+            ORBITS[i].radius + 0.01,
+            128,
+          ]} />
+          <meshBasicMaterial
+            color={0xffffff}
+            opacity={0.5}
+            transparent={true}
+          />
+        </mesh>
+      );
+
       let _f = props.foxes.splice(0, ORBITS[i].count).map((f, j) => {
-        let size = Math.pow(f.proximityPercentage, 2) / 10000 * 2;
+        let size = f.proximityPercentage / 100;
 
         return <FoxPlanet
           key={`${i}-${j}`}
@@ -44,6 +64,7 @@ export function SolarSystem(props: {
       _orbits.push(..._f);
     }
 
+    setOrbitPaths(_o);
     setOrbits(_orbits);
   }, [props.foxes, props.navigate]);
 
@@ -58,6 +79,9 @@ export function SolarSystem(props: {
             `https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/${mainFox.tokenId}_240x240.webp`
           }
           navigate={props.navigate} />
+      </group>}
+      {orbitPaths && <group>
+        {orbitPaths}
       </group>}
       {orbits && <group>{orbits}</group>}
     </>
