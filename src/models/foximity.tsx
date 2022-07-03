@@ -8,11 +8,11 @@ export const PUNCTUATION_WEIGHT  = 0.141237;
 export const AVERAGE_WORD_LENGTH = 0.211230;
 
 export const PHILOSOPHY_VALUE    = 5.034573;
-export const SPECIES_VALUE       = 5.945739;
+export const SPECIES_VALUE       = 4.945739;
 export const FUR_VALUE           = 3.989221;
 export const VIRTUE_VALUE        = 1.041223;
 export const BAGGAGE_VALUE       = 1.148235;
-export const SECRET_VALUE        = 1.908723;
+export const SECRET_VALUE        = 0.608723;
 
 const foxes = foxesJSON.map(fox => fox as Fox);
 
@@ -111,7 +111,7 @@ export function foximity(tokenID: string): Foximity[] {
         fox,
         tokenID: fox.tokenId.length > 32 ? `G${fox.tokenId.slice(fox.tokenId.length - 8)}` : fox.tokenId,
         proximity,
-        proximityPercentage: Math.round(proximity / maxProximity * 100000) / 1000,
+        proximityPercentage: Math.round(proximity / maxProximity * 10000) / 100,
       };
     })
     .sort((a, b) => b.proximityPercentage - a.proximityPercentage);
