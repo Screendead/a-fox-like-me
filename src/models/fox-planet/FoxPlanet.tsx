@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Fox } from '../fox/Fox';
 import { useTexture } from '@react-three/drei';
-import { NavigateFunction } from 'react-router-dom';
+import { NavigateFunction, useParams } from 'react-router-dom';
 
 export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
   main?: boolean,
@@ -16,9 +16,7 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
   imageURL: string,
   navigate: NavigateFunction,
 }) {
-  // const navigate = useNavigate();
   const meshRef = useRef<THREE.Mesh>(null!);
-  const meshRefMain = useRef<THREE.Mesh>(null!);
   const [texture, setTexture] = useState<THREE.Texture>();
   const [hover, setHover] = useState(false);
   const [orbitPosition, setOrbitPosition] = useState<number>();
@@ -30,7 +28,6 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
 
   useEffect(() => {
     meshRef.current.rotation.z = 0;
-    if (props.main) meshRefMain.current.rotation.z = 0;
 
     if (texture) {
       texture.rotation = 0;
@@ -53,10 +50,8 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
 
     let _dr = delta * (props.size ?? 1);
 
-    meshRef.current.rotation.z += _dr;
-    if (props.main) meshRefMain.current.rotation.z += _dr;
-
     texture.rotation -= _dr;
+    meshRef.current.rotation.z = -texture!.rotation;
 
     if (!orbitPosition) return;
 
@@ -64,11 +59,6 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
 
     meshRef.current.position.x = Math.cos(orbitPosition) * props.orbitRadius!;
     meshRef.current.position.y = Math.sin(orbitPosition) * props.orbitRadius!;
-
-    if (props.main) {
-      meshRefMain.current.position.x = Math.cos(orbitPosition) * props.orbitRadius!;
-      meshRefMain.current.position.y = Math.sin(orbitPosition) * props.orbitRadius!;
-    }
   });
 
   return (
@@ -84,13 +74,6 @@ export function FoxPlanet(props: JSX.IntrinsicElements['mesh'] & {
           color={!props.main && hover ? '#ffcccc' : '#ffffff'}
           map={texture} />
       </mesh>
-      {props.main && <mesh
-        {...props}
-        position={[0, 0, -0.001]}
-        ref={meshRefMain}>
-        <circleGeometry args={[(props.size || 1) + 0.05, 8]} />
-        <meshStandardMaterial color={'white'} />
-      </mesh>}
     </>
   );
 }
