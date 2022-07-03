@@ -69,7 +69,7 @@ export function AFoxLikeMe() {
               .map(f => (<tr key={f.tokenID}>
                   <td>
                     <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
-                      {f.tokenID}
+                      #{f.tokenID}
                     </Link>
                   </td>
                   <td>
@@ -77,7 +77,7 @@ export function AFoxLikeMe() {
                       {f.fox.name}
                     </Link>
                   </td>
-                  <td>{f.proximityPercentage}%</td>
+                  <td className="similarity">{f.proximityPercentage}%</td>
                 </tr>))}
           </tbody>
         </table>
@@ -110,7 +110,7 @@ export function AFoxLikeMe() {
               .map(f => (<tr key={f.tokenID}>
                   <td>
                     <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
-                      {f.tokenID}
+                      #{f.tokenID}
                     </Link>
                   </td>
                   <td>
@@ -118,7 +118,7 @@ export function AFoxLikeMe() {
                       {f.fox.name}
                     </Link>
                   </td>
-                  <td>{f.proximityPercentage}%</td>
+                  <td className="similarity">{f.proximityPercentage}%</td>
                 </tr>))}
           </tbody>
         </table>

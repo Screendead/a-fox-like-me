@@ -19,6 +19,21 @@ export function SolarSystem(props: {
   const [mainFox, setMainFox] = useState<Fox>();
   const [orbits, setOrbits] = useState<JSX.Element[]>([]);
   const [orbitPaths, setOrbitPaths] = useState<JSX.Element[]>([]);
+  const [showRings, setShowRings] = useState(false);
+
+  useEffect(() => {
+    let handleKeyPress = (e: KeyboardEvent) => {
+      if (e.code === 'Space') {
+        setShowRings(!showRings);
+      }
+    }
+
+    window.addEventListener('keypress', handleKeyPress);
+
+    return () => {
+      window.removeEventListener('keypress', handleKeyPress);
+    }
+  }, [showRings]);
 
   useEffect(() => {
     let _o = [];
@@ -80,7 +95,7 @@ export function SolarSystem(props: {
           }
           navigate={props.navigate} />
       </group>}
-      {orbitPaths && <group>
+      {showRings && orbitPaths && <group>
         {orbitPaths}
       </group>}
       {orbits && <group>{orbits}</group>}
