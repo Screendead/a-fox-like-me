@@ -128,13 +128,24 @@ table {
   border-collapse: separate;
   border-spacing: 5px 2px;
 
+  th, td {
+    line-height: 1;
+    vertical-align: baseline;
+    text-align: left;
+    min-width: 100px;
+    max-width: 250px;
+    padding-top: 5px;
+  }
+
   th {
     text-align: left;
     font-weight: bold;
   }
 
   td {
-    text-align: left;
+    &.similarity {
+      text-align: right;
+    }
   }
 }
 
@@ -145,6 +156,13 @@ table {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.back-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .action-button {

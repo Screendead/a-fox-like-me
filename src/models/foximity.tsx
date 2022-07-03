@@ -2,16 +2,16 @@ import { Fox } from './fox/Fox';
 import { Foximity } from './fox/Foximity';
 import foxesJSON from '../data/data.json';
 
-export const NAME_WEIGHT         = 0.042671;
-export const SPACES_WEIGHT       = 0.050129;
-export const PUNCTUATION_WEIGHT  = 0.041237;
-export const AVERAGE_WORD_LENGTH = 0.51123;
+export const NAME_WEIGHT         = 0.142671;
+export const SPACES_WEIGHT       = 0.150129;
+export const PUNCTUATION_WEIGHT  = 0.141237;
+export const AVERAGE_WORD_LENGTH = 0.211230;
 
-export const PHILOSOPHY_VALUE    = 4.034573;
-export const SPECIES_VALUE       = 3.945739;
-export const FUR_VALUE           = 2.989221;
-export const VIRTUE_VALUE        = 2.041223;
-export const BAGGAGE_VALUE       = 2.148235;
+export const PHILOSOPHY_VALUE    = 5.034573;
+export const SPECIES_VALUE       = 5.945739;
+export const FUR_VALUE           = 3.989221;
+export const VIRTUE_VALUE        = 1.041223;
+export const BAGGAGE_VALUE       = 1.148235;
 export const SECRET_VALUE        = 1.908723;
 
 const foxes = foxesJSON.map(fox => fox as Fox);
