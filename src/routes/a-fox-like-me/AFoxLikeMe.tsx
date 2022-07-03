@@ -7,17 +7,55 @@ import { Foximity } from "../../models/fox/Foximity";
 import { SolarSystem } from "../../models/SolarSystem";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
+function foxInfoRow(fox: Foximity) {
+  return (
+    <tr key={fox.tokenID}>
+      <td className="fox-id">
+        <Link className="fox-sublink" to={`/find/${fox.fox.tokenId}`}>
+          #{fox.tokenID}
+        </Link>
+      </td>
+      <td className="fox-name">
+        <Link className="fox-sublink" to={`/find/${fox.fox.tokenId}`}>
+          {fox.fox.name}
+        </Link>
+      </td>
+      <td className="similarity">{fox.proximityPercentage.toFixed(2)}%</td>
+    </tr>
+  );
+}
+
 export function AFoxLikeMe() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { width } = useWindowDimensions();
 
-  const [fox, setFoximity] = useState<Foximity | undefined>();
+  const [fox, setFox] = useState<Foximity | undefined>();
   const [foximities, setFoximities] = useState<Foximity[]>([]);
 
   const [shownDisplay, setShownDisplay] = useState<JSX.Element>();
 
-  const info = (
+  const [info, setInfo] = useState<JSX.Element>();
+  const [kindred, setKindred] = useState<JSX.Element>();
+  const [distant, setDistant] = useState<JSX.Element>();
+
+  useEffect(() => {
+    if (id) {
+      try {
+        let _f = foximity(id);
+        setFox(_f.find(f => f.fox.tokenId === id));
+        setFoximities(_f);
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      setFox(undefined);
+      setFoximities([]);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    setInfo(
     <div className={`display top-left`}>
       <div className="internalDisplay">
         {width <= 1200 && <div>
@@ -44,7 +82,8 @@ export function AFoxLikeMe() {
       </div>
     </div>
   );
-  const kindred = (
+
+    setKindred(
     <div className="display top-right">
       <div className="internalDisplay">
         {width <= 1200 && <div>
@@ -66,25 +105,14 @@ export function AFoxLikeMe() {
           <tbody>
             {foximities
               .slice(1, 11)
-              .map(f => (<tr key={f.tokenID}>
-                  <td>
-                    <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
-                      #{f.tokenID}
-                    </Link>
-                  </td>
-                  <td>
-                    <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
-                      {f.fox.name}
-                    </Link>
-                  </td>
-                  <td className="similarity">{f.proximityPercentage}%</td>
-                </tr>))}
+                .map(foxInfoRow)}
           </tbody>
         </table>
       </div>
     </div>
   );
-  const distant = (
+
+    setDistant(
     <div className="display bottom-right">
       <div className="internalDisplay">
         {width <= 1200 && <div>
@@ -107,39 +135,13 @@ export function AFoxLikeMe() {
             {[...foximities]
               .sort((a, b) => a.proximityPercentage - b.proximityPercentage)
               .slice(0, 5)
-              .map(f => (<tr key={f.tokenID}>
-                  <td>
-                    <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
-                      #{f.tokenID}
-                    </Link>
-                  </td>
-                  <td>
-                    <Link className="fox-sublink" to={`/find/${f.fox.tokenId}`}>
-                      {f.fox.name}
-                    </Link>
-                  </td>
-                  <td className="similarity">{f.proximityPercentage}%</td>
-                </tr>))}
+                .map(foxInfoRow)}
           </tbody>
         </table>
       </div>
     </div>
   );
-
-  useEffect(() => {
-    if (id) {
-      try {
-        let _f = foximity(id);
-        setFoximity(_f.find(f => f.fox.tokenId === id));
-        setFoximities(_f);
-      } catch (e) {
-        console.log(e);
-      }
-    } else {
-      setFoximity(undefined);
-      setFoximities([]);
-    }
-  }, [id]);
+  }, [fox, foximities, width]);
 
   return (
     <>

@@ -132,9 +132,12 @@ table {
     line-height: 1;
     vertical-align: baseline;
     text-align: left;
-    min-width: 100px;
-    max-width: 250px;
     padding-top: 5px;
+
+    max-lines: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   th {
@@ -143,6 +146,16 @@ table {
   }
 
   td {
+    &.fox-id {
+      max-width: 75px;
+      min-width: 75px;
+    }
+
+    &.fox-name {
+      max-width: 250px;
+      min-width: 250px;
+    }
+
     &.similarity {
       text-align: right;
     }
@@ -177,6 +190,18 @@ table {
   padding: 5px;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
+
+  .button-icon {
+    width: 40px;
+    height: 40px;
+
+    transition: all 0.2s ease-in-out;
+    filter: invert(1);
+
+    &:hover {
+      filter: invert(0);
+    }
+  }
 
   &:hover {
     background-color: #fff;
