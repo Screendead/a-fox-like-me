@@ -7,6 +7,11 @@ import { Foximity } from "../../models/fox/Foximity";
 import { SolarSystem } from "../../models/SolarSystem";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
+import metadataIcon from "./metadata.svg";
+import backIcon from "./back.svg";
+import kindredIcon from "./kindred.svg";
+import distantIcon from "./distant.svg";
+
 function foxInfoRow(fox: Foximity) {
   return (
     <tr key={fox.tokenID}>
@@ -40,6 +45,8 @@ export function AFoxLikeMe() {
   const [distant, setDistant] = useState<JSX.Element>();
 
   useEffect(() => {
+    setShownDisplay(undefined);
+
     if (id) {
       try {
         let _f = foximity(id);
@@ -56,96 +63,98 @@ export function AFoxLikeMe() {
 
   useEffect(() => {
     setInfo(
-    <div className={`display top-left`}>
-      <div className="internalDisplay">
-        {width <= 1200 && <div>
-          <button className="action-button top-right" onClick={
-            () => setShownDisplay(undefined)
-          }>CLOSE</button>
-        </div>}
-        <div className="heading">
-          <img className="pfp" src={
-            `https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/${fox?.fox.tokenId}_120x120.webp`
-          } alt="pfp" />
-          <span>
-            <h2 className="component-title">{fox?.fox.name.toUpperCase()}</h2>
-            <h3 className="component-subtitle">#{fox?.tokenID}</h3>
-          </span>
+      <div className={`display top-left`}>
+        <div className="internalDisplay">
+          {width <= 1200 && <div>
+            <button className="action-button top-right" onClick={
+              () => setShownDisplay(undefined)
+            }>CLOSE</button>
+          </div>}
+          <div className="heading">
+            <img className="pfp" src={
+              `https://storage.googleapis.com/a-fox-like-me.appspot.com/foxes/thumbnails/${fox?.fox.tokenId}_120x120.webp`
+            } alt="pfp" />
+            <span>
+              <h2 className="component-title">{fox?.fox.name.toUpperCase()}</h2>
+              <h3 className="component-subtitle">#{fox?.tokenID}</h3>
+            </span>
+          </div>
+          <ul>
+            {fox?.fox.attributes.map((a, i) => {
+              return (<li key={`fox-${fox?.tokenID}-attr-${i}`}>
+                <span className="trait-name">{a.trait_type}</span>: {a.value}
+              </li>);
+            })}
+          </ul>
         </div>
-        <ul>
-          {fox?.fox.attributes.map((a, i) => {
-            return (<li key={`fox-${fox?.tokenID}-attr-${i}`}>
-              <span className="trait-name">{a.trait_type}</span>: {a.value}
-            </li>);
-          })}
-        </ul>
       </div>
-    </div>
-  );
+    );
 
     setKindred(
-    <div className="display top-right">
-      <div className="internalDisplay">
-        {width <= 1200 && <div>
-          <button className="action-button top-right" onClick={
-            () => setShownDisplay(undefined)
-          }>CLOSE</button>
-        </div>}
-        <div className="heading">
-          <h2 className="component-title">KINDRED FOXES</h2>
-        </div>
-        <table className="cFoxes">
-          <thead>
-            <tr>
-              <th>Fox ID</th>
-              <th>Name</th>
-              <th>Similarity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {foximities
-              .slice(1, 11)
+      <div className="display top-right">
+        <div className="internalDisplay">
+          {width <= 1200 && <div>
+            <button className="action-button top-right" onClick={
+              () => setShownDisplay(undefined)
+            }>CLOSE</button>
+          </div>}
+          <div className="heading">
+            <h2 className="component-title">KINDRED FOXES</h2>
+          </div>
+          <table className="cFoxes">
+            <thead>
+              <tr>
+                <th>Fox ID</th>
+                <th>Name</th>
+                <th>Similarity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {foximities
+                .slice(1, 11)
                 .map(foxInfoRow)}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  );
+    );
 
     setDistant(
-    <div className="display bottom-right">
-      <div className="internalDisplay">
-        {width <= 1200 && <div>
-          <button className="action-button top-right" onClick={
-            () => setShownDisplay(undefined)
-          }>CLOSE</button>
-        </div>}
-        <div className="heading">
-          <h2 className="component-title">DISTANT FOXES</h2>
-        </div>
-        <table className="dFoxes">
-          <thead>
-            <tr>
-              <th>Fox ID</th>
-              <th>Name</th>
-              <th>Similarity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[...foximities]
-              .sort((a, b) => a.proximityPercentage - b.proximityPercentage)
-              .slice(0, 5)
+      <div className="display bottom-right">
+        <div className="internalDisplay">
+          {width <= 1200 && <div>
+            <button className="action-button top-right" onClick={
+              () => setShownDisplay(undefined)
+            }>CLOSE</button>
+          </div>}
+          <div className="heading">
+            <h2 className="component-title">DISTANT FOXES</h2>
+          </div>
+          <table className="dFoxes">
+            <thead>
+              <tr>
+                <th>Fox ID</th>
+                <th>Name</th>
+                <th>Similarity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...foximities]
+                .sort((a, b) => a.proximityPercentage - b.proximityPercentage)
+                .slice(0, 5)
                 .map(foxInfoRow)}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  );
+    );
   }, [fox, foximities, width]);
 
   return (
     <>
-      <button className="action-button bottom-left" onClick={() => navigate("/")}>Back to Home</button>
+      <button className="action-button bottom-left" onClick={() => navigate("/")}>
+        <img className="button-icon" src={backIcon} alt="Back to search page" />
+      </button>
       <div className="experience-container">
         <Canvas
           linear
@@ -164,13 +173,19 @@ export function AFoxLikeMe() {
         ? (shownDisplay ? shownDisplay : <>
           <button className="action-button top-left" onClick={() => {
             setShownDisplay(info);
-          }}>Show Info</button>
+          }}>
+            <img className="button-icon" src={metadataIcon} alt="View fox metadata" />
+          </button>
           <button className="action-button top-right" onClick={() => {
             setShownDisplay(kindred);
-          }}>Show Kindred</button>
+          }}>
+            <img className="button-icon" src={kindredIcon} alt="View kindred foxes" />
+          </button>
           <button className="action-button bottom-right" onClick={() => {
             setShownDisplay(distant);
-          }}>Show Distant</button>
+          }}>
+            <img className="button-icon" src={distantIcon} alt="View distant foxes" />
+          </button>
         </>)
         : <>
           {info}
