@@ -20,7 +20,7 @@ export function Find() {
     <div className="app">
       <div className="main">
         <p className="pf-tagline">
-          A satellite project of the <a href="https://www.philosophicalfoxes.com/" target="_blank">
+          A satellite project of the <a href="https://www.philosophicalfoxes.com/" target="_blank" rel="noreferrer">
             Philosophical Foxes
           </a> community.
         </p>
@@ -35,7 +35,7 @@ export function Find() {
       </div>
       <div className="footer">
         <span className="footer-text">
-          Made with &lt;3 by <a href="https://github.com/screendead" target="_blank">@screendead</a> and <a href="https://www.chriscocreated.xyz/" target="_blank">@ChrisCoCreated</a>
+          Made with &lt;3 by <a href="https://github.com/screendead" target="_blank" rel="noreferrer">@screendead</a> and <a href="https://www.chriscocreated.xyz/" target="_blank" rel="noreferrer">@ChrisCoCreated</a>
         </span>
       </div>
     </div>
