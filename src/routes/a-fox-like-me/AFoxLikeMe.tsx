@@ -152,9 +152,9 @@ export function AFoxLikeMe() {
 
   return (
     <>
-      <button className="action-button bottom-left" onClick={() => navigate("/")}>
+      {!shownDisplay && <button className="action-button bottom-left" onClick={() => navigate("/")}>
         <img className="button-icon" src={backIcon} alt="Back to search page" />
-      </button>
+      </button>}
       <div className="experience-container">
         <Canvas
           linear
