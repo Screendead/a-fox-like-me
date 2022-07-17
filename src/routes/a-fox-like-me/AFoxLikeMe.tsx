@@ -12,6 +12,8 @@ import backIcon from "./back.svg";
 import kindredIcon from "./kindred.svg";
 import distantIcon from "./distant.svg";
 
+import { TwitterIcon, TwitterShareButton } from "react-share";
+
 function foxInfoRow(fox: Foximity) {
   return (
     <tr key={fox.tokenID}>
@@ -43,6 +45,7 @@ export function AFoxLikeMe() {
   const [info, setInfo] = useState<JSX.Element>();
   const [kindred, setKindred] = useState<JSX.Element>();
   const [distant, setDistant] = useState<JSX.Element>();
+  const [twitterShare, setTwitterShare] = useState<JSX.Element>();
 
   useEffect(() => {
     setShownDisplay(undefined);
@@ -80,12 +83,14 @@ export function AFoxLikeMe() {
             </span>
           </div>
           <table>
-            {fox?.fox.attributes.map((a, i) => {
-              return (<tr key={`fox-${fox?.tokenID}-attr-${i}`}>
-                <td className="trait-name">{a.trait_type}:</td>
-                <td>{a.value}</td>
-              </tr>);
-            })}
+            <tbody>
+              {fox?.fox.attributes.map((a, i) => {
+                return (<tr key={`fox-${fox?.tokenID}-attr-${i}`}>
+                  <td className="trait-name">{a.trait_type}:</td>
+                  <td>{a.value}</td>
+                </tr>);
+              })}
+            </tbody>
           </table>
         </div>
       </div>
@@ -149,13 +154,27 @@ export function AFoxLikeMe() {
         </div>
       </div>
     );
+
+    setTwitterShare(
+      <TwitterShareButton
+        url={`https://afoxlikeme.xyz/find/${fox?.fox.tokenId}`}
+        title={`The kindred foxes of 🦊 ${fox?.fox.name}`}
+        via="FoxesNFT"
+        hashtags={["afoxlikeme"]}
+        className={`twitter-share-button`}>
+        <TwitterIcon size={45} round />
+      </TwitterShareButton>
+    );
   }, [fox, foximities, width]);
 
   return (
     <>
-      {!shownDisplay && <button className="action-button bottom-left" onClick={() => navigate("/")}>
-        <img className="button-icon" src={backIcon} alt="Back to search page" />
-      </button>}
+      {!shownDisplay && <span className="bottom-left button-list">
+        <button className="action-button" onClick={() => navigate("/")}>
+          <img className="button-icon" src={backIcon} alt="Back to search page" />
+        </button>
+        {twitterShare}
+      </span>}
       <div className="experience-container">
         <Canvas
           linear
