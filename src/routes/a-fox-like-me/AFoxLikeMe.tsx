@@ -79,13 +79,14 @@ export function AFoxLikeMe() {
               <h3 className="component-subtitle">#{fox?.tokenID}</h3>
             </span>
           </div>
-          <ul>
+          <table>
             {fox?.fox.attributes.map((a, i) => {
-              return (<li key={`fox-${fox?.tokenID}-attr-${i}`}>
-                <span className="trait-name">{a.trait_type}</span>: {a.value}
-              </li>);
+              return (<tr key={`fox-${fox?.tokenID}-attr-${i}`}>
+                <td className="trait-name">{a.trait_type}:</td>
+                <td>{a.value}</td>
+              </tr>);
             })}
-          </ul>
+          </table>
         </div>
       </div>
     );
@@ -152,9 +153,9 @@ export function AFoxLikeMe() {
 
   return (
     <>
-      <button className="action-button bottom-left" onClick={() => navigate("/")}>
+      {!shownDisplay && <button className="action-button bottom-left" onClick={() => navigate("/")}>
         <img className="button-icon" src={backIcon} alt="Back to search page" />
-      </button>
+      </button>}
       <div className="experience-container">
         <Canvas
           linear

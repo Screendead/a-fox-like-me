@@ -87,12 +87,11 @@
 .internalDisplay {
   padding: 20px;
 
-  ul {
-    list-style-type: none;
+  table {
     padding: 0;
     margin: 0;
 
-    li {
+    tr {
       padding-top: 10px;
 
       .trait-name {
@@ -162,13 +161,13 @@ table {
 
   td {
     &.fox-id {
-      max-width: 75px;
-      min-width: 75px;
+      max-width: calc(min(75px, 25%) - 25px);
+      min-width: calc(min(75px, 25%) - 25px);
     }
 
     &.fox-name {
-      max-width: 250px;
-      min-width: 250px;
+      max-width: min(30vw, 250px);
+      min-width: min(30vw, 250px);
     }
 
     &.similarity {
