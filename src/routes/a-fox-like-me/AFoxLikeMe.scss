@@ -1,5 +1,15 @@
 
-@import url('https://db.onlinewebfonts.com/c/51c640524453c80e4ec2b79f620dae59?family=Code+7x5');
+/*
+      www.OnlineWebFonts.Com
+      You must credit the author Copy this link on your web
+      <div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>is licensed by CC BY 3.0</div>
+      OR
+      <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>
+*/
+@font-face {
+  font-family: "Code 7x5";
+  src: url("../../assets/fonts/Code\ 7x5.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+}
 
 .experience-container {
   position: absolute;
@@ -57,6 +67,8 @@
   min-width: 250px;
   max-width: 500px;
 
+  overflow: hidden;
+
   @media (max-width: 1200px) {
     flex-direction: column;
     justify-content: center;
@@ -72,12 +84,11 @@
 .internalDisplay {
   padding: 20px;
 
-  ul {
-    list-style-type: none;
+  table {
     padding: 0;
     margin: 0;
 
-    li {
+    tr {
       padding-top: 10px;
 
       .trait-name {
@@ -128,13 +139,37 @@ table {
   border-collapse: separate;
   border-spacing: 5px 2px;
 
+  th, td {
+    line-height: 1;
+    vertical-align: baseline;
+    text-align: left;
+    padding-top: 5px;
+
+    max-lines: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   th {
     text-align: left;
     font-weight: bold;
   }
 
   td {
-    text-align: left;
+    &.fox-id {
+      max-width: calc(min(75px, 25%) - 25px);
+      min-width: calc(min(75px, 25%) - 25px);
+    }
+
+    &.fox-name {
+      max-width: min(30vw, 250px);
+      min-width: min(30vw, 250px);
+    }
+
+    &.similarity {
+      text-align: right;
+    }
   }
 }
 
@@ -147,9 +182,34 @@ table {
   }
 }
 
+.back-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.button-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.twitter-share-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .action-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: transparent;
   border: 2px solid #fff;
+  border: none;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
@@ -157,8 +217,22 @@ table {
   font-weight: bold;
   margin: 5px;
   padding: 5px;
+  min-width: 55px;
+  text-align: center;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
+
+  .button-icon {
+    width: 45px;
+    height: 45px;
+
+    transition: all 0.2s ease-in-out;
+    filter: invert(1);
+
+    &:hover {
+      filter: invert(0);
+    }
+  }
 
   &:hover {
     background-color: #fff;
