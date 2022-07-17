@@ -18,7 +18,6 @@
 .env.test.local
 .env.production.local
 **/serviceAccount.json
-**/*.png
 
 *.log*
 npm-debug.log*
