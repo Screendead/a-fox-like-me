@@ -82,12 +82,12 @@ export function AFoxLikeMe() {
               <h3 className="component-subtitle">#{fox?.tokenID}</h3>
             </span>
           </div>
-          <table>
+          <table className="metadata">
             <tbody>
               {fox?.fox.attributes.map((a, i) => {
                 return (<tr key={`fox-${fox?.tokenID}-attr-${i}`}>
                   <td className="trait-name">{a.trait_type}:</td>
-                  <td>{a.value}</td>
+                  <td className="trait-value">{a.value}</td>
                 </tr>);
               })}
             </tbody>
