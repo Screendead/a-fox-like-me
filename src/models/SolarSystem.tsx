@@ -36,7 +36,6 @@ export function SolarSystem(props: {
   }, [showRings]);
 
   useEffect(() => {
-    console.log('SolarSystem.useEffect');
     let _o = [];
     let _orbits = [];
 
