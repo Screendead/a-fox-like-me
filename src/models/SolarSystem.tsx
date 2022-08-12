@@ -81,7 +81,9 @@ export function SolarSystem(props: {
 
     setOrbitPaths(_o);
     setOrbits(_orbits);
-  }, [props.foxes, props.navigate]);
+
+    // eslint-disable-next-line
+  }, [props.foxes]);
 
   return (
     <>
